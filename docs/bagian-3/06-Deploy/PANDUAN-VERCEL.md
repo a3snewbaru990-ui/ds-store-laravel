@@ -75,6 +75,8 @@ Kode pesanan demo: `DS-DEMO-001`, `DS-DEMO-002`. WhatsApp demo untuk lacak: `081
 | Halaman login redirect ke localhost | `APP_URL` masih default | Set `APP_URL` ke URL Vercel lalu redeploy |
 | Perubahan kode tidak muncul | Cache Vercel | Redeploy atau clear cache di dashboard Vercel |
 | Seed ganda | Deploy ulang | Aman: seeder memakai `updateOrCreate` dan pengecekan order |
+| `Undefined table` saat build/runtime | DDL Postgres through pooler gagal di dalam transaksi | Semua migration sudah memakai `public $withinTransaction = false;` |
+| Ingin migrate ulang DB produksi | Database sudah berisi data lama | Jalankan `php artisan db:wipe --force` lalu `php artisan migrate --force && php artisan db:seed --force` dengan env `DATABASE_URL` produksi dan ekstensi `pdo_pgsql` aktif |
 
 ## 7. Catatan penting
 
