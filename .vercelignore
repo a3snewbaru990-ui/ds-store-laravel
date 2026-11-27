@@ -1,0 +1,14 @@
+/.git
+/node_modules
+/vendor
+/docs
+/tests
+/.env
+/storage/logs
+/storage/framework/views
+/storage/framework/sessions
+/storage/app/asset-backups
+/storage/app/private
+/storage/app/public
+npm-debug.log
+*.log

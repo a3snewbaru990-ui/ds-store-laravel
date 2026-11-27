@@ -1,0 +1,21 @@
+{
+  "name": "DS Store — Joki Akun Mobile Legends",
+  "short_name": "DS Store",
+  "description": "Respon Cepat, Progres Kilat & 100% Amanah. Jasa joki akun Mobile Legends Season 42.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#06b6d4",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

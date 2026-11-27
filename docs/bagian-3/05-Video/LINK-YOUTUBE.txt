@@ -1,0 +1,14 @@
+LINK VIDEO PRESENTASI — DS STORE
+
+Tempel link YouTube di baris berikut (format Watch URL):
+
+https://youtu.be/___________________
+
+ Judul video disarankan:
+ DS Store - Joki Akun Mobile Legends | Laravel 12 - [Nama Kelompok]
+
+ Pengaturan video:
+ - Akses: Unlisted (atau Public sesuai instruksi dosen)
+ - Durasi: 5-8 menit
+ - Bahasa: Bahasa Indonesia
+ - Sertakan link project/laporan di deskripsi jika diizinkan
