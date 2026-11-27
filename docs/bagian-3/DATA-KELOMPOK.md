@@ -19,6 +19,8 @@
 | Tanggal pengumpulan | `[Tanggal]` |
 | Link video YouTube | `[https://youtu.be/...]` |
 | Link folder Drive (jika ada) | `[https://drive.google.com/...]` |
+| Link website live (Vercel) | `https://ds-store-laravel.vercel.app` |
+| Link repository GitHub | `https://github.com/a3snewbaru990-ui/ds-store-laravel` |
 
 ## Pembagian tugas (isi sesuai kondisi kelompok)
 

@@ -65,6 +65,12 @@ bagian-3/
 
 Cover → Agenda → Latar belakang → Solusi → Arsitektur → Fitur Laravel → Database & rute → Beranda → Order → Dashboard → Pelacakan & QA → Pengujian → Cara menjalankan → Kelengkapan pengumpulan → Penutup.
 
+## Link live
+
+- Website: **https://ds-store-laravel.vercel.app**
+- Repository: **https://github.com/a3snewbaru990-ui/ds-store-laravel**
+- Panduan deploy: `06-Deploy/PANDUAN-VERCEL.md`
+
 ## Catatan penting
 
 - Aplikasi **sudah terverifikasi** dengan `vendor/bin/phpunit`: **18 test, 58 assertion, lulus**.
