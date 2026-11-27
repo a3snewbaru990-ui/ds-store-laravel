@@ -736,7 +736,7 @@ def chapter5(doc: Document) -> None:
     )
 
     doc.add_heading("5.3 Pengujian Otomatis", level=2)
-    doc.add_paragraph("Perintah: php artisan test")
+    doc.add_paragraph("Perintah: vendor/bin/phpunit")
     add_code(
         doc,
         """

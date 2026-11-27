@@ -418,7 +418,7 @@ Pengujian dilakukan pada tiga lapis: (1) unit/feature test Laravel dengan SQLite
 
 ### 5.3 Pengujian Otomatis
 
-Perintah: php artisan test
+Perintah: vendor/bin/phpunit
 
 Tests:    18 passed (58 assertions)
 

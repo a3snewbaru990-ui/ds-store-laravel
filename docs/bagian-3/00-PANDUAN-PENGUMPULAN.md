@@ -67,7 +67,7 @@ Cover → Agenda → Latar belakang → Solusi → Arsitektur → Fitur Laravel 
 
 ## Catatan penting
 
-- Aplikasi **sudah terverifikasi** dengan `php artisan test`: **18 test, 58 assertion, lulus**.
+- Aplikasi **sudah terverifikasi** dengan `vendor/bin/phpunit`: **18 test, 58 assertion, lulus**.
 - Akun demo: `demo@dsstore.id` / `password` dan `admin@dsstore.id` / `password`.
 - Jika password demo tidak cocok setelah source dijalankan ulang, jalankan:
   `php artisan db:seed --class=DemoDataSeeder --force`.

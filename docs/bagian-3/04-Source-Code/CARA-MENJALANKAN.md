@@ -88,7 +88,7 @@ tests/Feature/               18 pengujian otomatis
 ## Pengujian
 
 ```powershell
-php artisan test
+vendor/bin/phpunit
 ```
 
 Hasil terakhir: **18 tests passed, 58 assertions**.

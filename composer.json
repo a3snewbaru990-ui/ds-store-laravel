@@ -38,8 +38,7 @@
             "npm run build"
         ],
         "vercel": [
-            "@php artisan migrate --force --no-interaction",
-            "@php artisan db:seed --force --no-interaction"
+            "@php artisan migrate --force --no-interaction"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",

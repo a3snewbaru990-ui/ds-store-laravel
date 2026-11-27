@@ -10,7 +10,7 @@ EXCLUDE_DIRS = {
     "vendor", "node_modules", "docs", ".git",
 }
 EXCLUDE_FILES = {
-    ".env", "composer-setup.php", "DS-STORE-Source.zip",
+    "composer-setup.php", "DS-STORE-Source.zip",
     ".DS_Store", "Thumbs.db",
 }
 # Keep Laravel's storage skeleton (.gitignore placeholders) but skip logs,
@@ -20,6 +20,8 @@ def should_skip(rel: Path) -> bool:
     if any(part in EXCLUDE_DIRS for part in parts[:-1]):
         return True
     if rel.name in EXCLUDE_FILES:
+        return True
+    if rel.name.startswith(".env") and rel.name != ".env.example":
         return True
     if parts[0] == "storage" and rel.name != ".gitignore":
         return True

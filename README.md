@@ -48,7 +48,7 @@ php artisan db:seed --class=DemoDataSeeder --force
 ## Pengujian
 
 ```powershell
-php artisan test
+vendor/bin/phpunit
 ```
 
 Hasil terakhir: **18 test lulus, 58 assertion**.
