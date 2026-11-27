@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * DDL statements on pooled Postgres hosts can fail when wrapped in a
+     * transaction. Run this migration outside a transaction.
      */
+    public $withinTransaction = false;
+
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -37,9 +40,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');
