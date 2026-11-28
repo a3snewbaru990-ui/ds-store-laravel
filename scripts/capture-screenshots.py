@@ -24,6 +24,12 @@ def submit_tracking(page) -> None:
     page.wait_for_load_state("networkidle")
 
 
+def open_chatbot(page) -> None:
+    page.locator("[data-chatbot-toggle]").click()
+    page.locator('[data-chatbot-ask="harga"]').click()
+    page.wait_for_timeout(300)
+
+
 def capture(page, name: str, url: str, width: int, height: int, *, auth: str | None = None, action=None) -> None:
     page.set_viewport_size({"width": width, "height": height})
     if auth:
@@ -60,6 +66,7 @@ def main() -> None:
             ("10-admin-orders.png", "/admin/orders", 1440, 1150, "a3snewbaru990@gmail.com", None),
             ("11-admin-packages.png", "/admin/packages", 1440, 1150, "a3snewbaru990@gmail.com", None),
             ("12-admin-order-detail.png", "/admin/orders/1", 1440, 1600, "a3snewbaru990@gmail.com", None),
+            ("13-chatbot.png", "/", 1440, 1200, None, open_chatbot),
         ]
 
         for name, url, width, height, auth, action in jobs:

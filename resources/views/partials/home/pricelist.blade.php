@@ -1,5 +1,5 @@
 @php
-    $defaultPackage = $starPackages->firstWhere('is_featured', true) ?? $starPackages->first();
+    $defaultPackage = $starPackages->first() ?? null;
     $defaultStars = 10;
 @endphp
 
@@ -10,10 +10,6 @@
                 <p class="eyebrow">Pricelist Season 42</p>
                 <h2 id="pricelist-title">Harga jelas dari GM sampai Mythic Glory.</h2>
                 <p class="section-lead">Pilih rank, tentukan jumlah bintang, lalu lanjutkan ke form pesanan. Total dihitung otomatis dari harga resmi DS Store.</p>
-            </div>
-            <div class="section-note">
-                <span class="status-dot" aria-hidden="true"></span>
-                <span>Harga per bintang<br><strong>Diperbarui untuk Season 42</strong></span>
             </div>
         </div>
 

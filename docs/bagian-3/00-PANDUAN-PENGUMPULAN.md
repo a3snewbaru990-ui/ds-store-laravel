@@ -9,7 +9,7 @@ Paket ini berisi **hasil project, laporan, dan presentasi** untuk website DS Sto
 - [ ] Ganti placeholder pada slide 1 dan slide terakhir `02-Presentasi/Presentasi-DS-Store.pptx`.
 - [ ] Ekspor video presentasi ke YouTube dan isi `05-Video/LINK-YOUTUBE.txt`.
 - [ ] Pastikan `05-Video/Script-Video-Presentasi.md` sudah dibaca oleh presenter.
-- [ ] Pastikan folder `03-Screenshots` berisi 12 screenshot (tanpa error/blank).
+- [ ] Pastikan folder `03-Screenshots` berisi 13 screenshot (tanpa error/blank).
 - [ ] Pastikan `04-Source-Code/DS-STORE-Source.zip` tidak menyertakan `vendor/` dan `node_modules/`.
 - [ ] (Opsional) Ikuti `06-Deploy/PANDUAN-VERCEL.md` agar website bisa diakses publik via URL Vercel.
 - [ ] Rename folder kelompok mengikuti format yang diminta dosen, misalnya `Kelompok_01_NIM-Ketua_Bagian3`.
@@ -39,7 +39,8 @@ bagian-3/
 │   ├── 09-admin-dashboard.png
 │   ├── 10-admin-orders.png
 │   ├── 11-admin-packages.png
-│   └── 12-admin-order-detail.png
+│   ├── 12-admin-order-detail.png
+│   └── 13-chatbot.png
 ├── 04-Source-Code/
 │   ├── DS-STORE-Source.zip        <- source Laravel (tanpa vendor/node_modules)
 │   └── CARA-MENJALANKAN.md        <- instruksi install & demo
@@ -76,5 +77,6 @@ Cover → Agenda → Latar belakang → Solusi → Arsitektur → Fitur Laravel 
 - Aplikasi **sudah terverifikasi** dengan `vendor/bin/phpunit`: **18 test, 57 assertion, lulus**.
 - Tidak ada akun demo. Admin dibuat sendiri dengan:
   `php artisan admin:create a3snewbaru990@gmail.com --name="Admin DS Store"`.
-- Warna website sudah disesuaikan dengan logo: charcoal, silver, dan gold tua.
+- Model UI “Atelier”: charcoal bertekstur, tipografi serif, gold tua sesuai logo, tidak simetris.
+- Pricelist dibuka dari Grandmaster; chatbot tersedia di halaman publik.
 - Seluruh screenshot diambil dari aplikasi yang berjalan pada `127.0.0.1:8000` setelah perubahan warna dan akun admin.

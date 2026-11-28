@@ -73,6 +73,7 @@
     </main>
 
     <x-site-footer />
+    <x-site-chatbot />
 
     @stack('scripts')
 </body>

@@ -679,6 +679,137 @@ $$('.faq-item').forEach((item) => {
 });
 
 /* --------------------------------------------------------------------------
+   Site chatbot — small rule-based helper for prices and order flow
+   -------------------------------------------------------------------------- */
+
+const chatbot = $('[data-chatbot]');
+
+if (chatbot) {
+    const toggle = $('[data-chatbot-toggle]', chatbot);
+    const panel = $('[data-chatbot-panel]', chatbot);
+    const closeButton = $('[data-chatbot-close]', chatbot);
+    const messages = $('[data-chatbot-messages]', chatbot);
+    const form = $('[data-chatbot-form]', chatbot);
+    const input = $('#chatbot-input', chatbot);
+    const whatsappUrl = chatbot.dataset.whatsapp || '#';
+
+    const appendMessage = (text, sender = 'bot') => {
+        if (!messages) {
+            return;
+        }
+
+        const bubble = document.createElement('p');
+        bubble.className = `chatbot-message chatbot-message--${sender}`;
+        bubble.textContent = text;
+        messages.appendChild(bubble);
+        messages.scrollTop = messages.scrollHeight;
+    };
+
+    const priceAnswer = () => {
+        const ranks = $$('[data-rank-input]').map((item) => ({
+            name: item.dataset.name,
+            price: Number(item.dataset.price) || 0,
+        }));
+
+        if (ranks.length === 0) {
+            return 'Paket mulai Rp 5.000 per bintang. Buka halaman pricelist untuk melihat semua pilihan.';
+        }
+
+        return ranks
+            .map((rank) => `${rank.name}: Rp ${rank.price.toLocaleString('id-ID')}`)
+            .join('\n');
+    };
+
+    const replyFor = (question) => {
+        const text = question.toLowerCase();
+
+        if (/harga|price|biaya|rp|bintang|rp\.?/.test(text)) {
+            return priceAnswer();
+        }
+
+        if (/cara|order|pesan|beli|daftar/.test(text)) {
+            return 'Pilih paket di pricelist, tentukan jumlah bintang, lalu isi data akun di form order. Pembayaran dikonfirmasi admin lewat WhatsApp.';
+        }
+
+        if (/lacak|status|progres|resi|kode/.test(text)) {
+            return 'Buka halaman Lacak pesanan, lalu masukkan kode order dan nomor WhatsApp yang dipakai saat order.';
+        }
+
+        if (/admin|whatsapp|wa|hubungi|manusia/.test(text)) {
+            return `Untuk jawaban langsung, chat admin di WhatsApp: ${whatsappUrl}`;
+        }
+
+        if (/aman|password|akun/.test(text)) {
+            return 'Password akun game tidak disimpan di website. Detail akun hanya dibahas dengan admin lewat WhatsApp setelah pesanan dikonfirmasi.';
+        }
+
+        return 'Aku bisa bantu soal harga, cara order, pelacakan, dan keamanan akun. Kalau butuh jawaban langsung, silakan chat admin lewat WhatsApp.';
+    };
+
+    const setOpen = (open) => {
+        if (!panel || !toggle) {
+            return;
+        }
+
+        panel.hidden = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Tutup asisten DS Store' : 'Buka asisten DS Store');
+
+        if (open) {
+            input?.focus({ preventScroll: true });
+        } else {
+            toggle.focus({ preventScroll: true });
+        }
+    };
+
+    toggle?.addEventListener('click', () => setOpen(panel?.hidden ?? true));
+    closeButton?.addEventListener('click', () => setOpen(false));
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && panel && !panel.hidden) {
+            setOpen(false);
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (panel && !panel.hidden && !chatbot.contains(event.target)) {
+            setOpen(false);
+        }
+    });
+
+    $$('[data-chatbot-ask]', chatbot).forEach((button) => {
+        button.addEventListener('click', () => {
+            const question = button.dataset.chatbotAsk || '';
+            const labels = {
+                harga: 'Berapa harga joki?',
+                cara: 'Cara order gimana?',
+                lacak: 'Lacak pesanan',
+                admin: 'Chat admin',
+            };
+
+            appendMessage(labels[question] || question, 'user');
+            appendMessage(replyFor(question));
+        });
+    });
+
+    form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const value = input?.value.trim();
+        if (!value) {
+            return;
+        }
+
+        appendMessage(value, 'user');
+        appendMessage(replyFor(value));
+
+        if (input) {
+            input.value = '';
+        }
+    });
+}
+
+/* --------------------------------------------------------------------------
    Gentle scroll reveal
    -------------------------------------------------------------------------- */
 

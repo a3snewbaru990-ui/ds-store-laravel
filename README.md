@@ -13,6 +13,8 @@ Tagline: **Respon Cepat, Progres Kilat & 100% Amanah**.
 - Order dengan validasi `StoreOrderRequest` (User ID, Server ID, WhatsApp, metode login).
 - Riwayat progres pesanan (`order_events`) pada dashboard pelanggan dan admin.
 - Pelacakan pesanan tanpa login memakai kode order + nomor WhatsApp.
+- Chatbot ringan di halaman publik untuk tanya harga, cara order, lacak, dan keamanan akun; tetap bisa lanjut ke admin via WhatsApp.
+- Pricelist dibuka dari paket Grandmaster sebagai pilihan awal, bukan langsung Mythic.
 - Admin: dashboard metrik, filter pesanan, update status/pembayaran, kelola paket, daftar pelanggan.
 - Desain responsif dengan palet dark slate, cyan, dan gold; emblem rank transparan.
 

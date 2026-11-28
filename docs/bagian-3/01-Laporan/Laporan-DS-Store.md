@@ -210,6 +210,7 @@ Password akun game tidak disimpan; detail akun hanya dibahas melalui WhatsApp ad
 | F6 | Mengubah profil dan password | Pelanggan |
 | F7 | Melacak pesanan tanpa login dengan kode order dan WhatsApp | Pengunjung |
 | F8 | Mengelola pesanan, paket, dan melihat data pelanggan | Admin |
+| F9 | Membantu pengunjung lewat chatbot ringan untuk harga, order, dan lacak | Pengunjung |
 
 | No | Kebutuhan Nonfungsional | Target |
 | --- | --- | --- |
@@ -264,7 +265,7 @@ Aplikasi terdaftar 26 rute. Rute utama dirangkum berikut:
 
 ### 3.5 Desain Antarmuka
 
-Model antarmuka yang dipakai adalah “The Forge”: permukaan charcoal metal, aksen silver yang dipoles, dan emas antik yang diambil langsung dari logo DS Store. Token warna didefinisikan dalam OKLCH agar kestabilan hue dan kontras dapat diperhitungkan, dengan fallback hex untuk kompatibilitas. Tipografi memakai Bai Jamjuree untuk judul dan Manrope untuk teks tubuh. Label kecil uppercase dan garis emas memberi kesan lencana/guild premium, bukan lagi kesan command center biru.
+Model antarmuka yang dipakai adalah “Atelier”: permukaan charcoal dengan tekstur titik halus, aksen emas antik yang diambil langsung dari logo, dan tipografi serif untuk judul supaya tidak terasa seragam. Token warna didefinisikan dalam OKLCH dengan fallback hex. Susunannya sengaja tidak simetris: sudut kartu berbeda, kartu pricelist diberi offset vertikal, dan label memakai kalimat biasa, bukan uppercase. Hasilnya lebih mirip catatan editorial bengkel daripada templat dashboard generik.
 
 | Peran warna | Nilai OKLCH | Hex fallback | Penggunaan |
 | --- | --- | --- | --- |
@@ -360,6 +361,10 @@ Gambar 4.5 Hasil pelacakan pesanan tanpa login
 Gambar 4.6 Dashboard admin
 
 Gambar 4.7 Detail pesanan dan pembaruan status pada area admin
+
+#### 4.3.5 Chatbot Publik
+
+Chatbot ringan ditambahkan pada layout publik sebagai komponen Blade. Tombol mengambang membuka panel yang bisa menerima pertanyaan bebas atau memakai empat tombol cepat. Jawaban harga diambil langsung dari atribut data pada kartu pricelist, sehingga tidak duplikat dengan data seeder. Panel menutup dengan Escape atau klik di luar, serta menyediakan tautan lanjut ke admin via WhatsApp.
 
 ### 4.4 Penerapan Fitur Laravel
 
@@ -526,7 +531,7 @@ DATA-KELOMPOK.md
 | 01-home-desktop.png | Beranda desktop: hero + pricelist |
 | 02-home-mobile.png | Beranda mobile |
 | 03-mobile-nav.png | Drawer navigasi mobile |
-| 04-login.png | Halaman login DS Store (model The Forge) |
+| 04-login.png | Halaman login DS Store (model Atelier) |
 | 05-order-form.png | Form order dan ringkasan total |
 | 06-tracking-result.png | Hasil pelacakan pesanan |
 | 07-customer-dashboard.png | Dashboard pelanggan |
@@ -535,6 +540,7 @@ DATA-KELOMPOK.md
 | 10-admin-orders.png | Daftar pesanan admin |
 | 11-admin-packages.png | Kelola paket joki |
 | 12-admin-order-detail.png | Detail pesanan dan update status admin |
+| 13-chatbot.png | Panel chatbot dan jawaban harga |
 
 ## LAMPIRAN D  LINK PRESENTASI VIDEO
 

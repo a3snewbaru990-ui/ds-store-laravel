@@ -1,0 +1,483 @@
+/* ==========================================================================
+   DS Store — UI Model 3: "Atelier"
+   Less uniform, more editorial. Flat metal, one accent, uneven rhythm.
+   Loaded after new-model.css; only deliberate overrides live here.
+   ========================================================================== */
+
+:root {
+    --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+    --atelier-gold: oklch(0.728 0.138 89.7);
+    --atelier-gold-soft: oklch(0.883 0.087 88.4);
+    --atelier-steel: oklch(0.716 0.017 239.2);
+    --atelier-steel-soft: oklch(0.854 0.011 243.7);
+    --atelier-char: oklch(0.207 0.010 248.3);
+    --atelier-char-2: oklch(0.240 0.015 248.4);
+    --atelier-line: oklch(0.728 0.138 89.7 / 0.22);
+}
+
+html {
+    background: var(--atelier-char);
+}
+
+body.site-body {
+    background-color: var(--atelier-char);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    background-size: 7px 7px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle at 15% 0%, oklch(0.728 0.138 89.7 / 0.06), transparent 45%);
+}
+
+/* --------------------------------------------------------------------------
+   Header without the loud bar
+   -------------------------------------------------------------------------- */
+
+.announcement,
+.site-header.is-scrolled .announcement {
+    background: var(--atelier-char-2);
+    border-bottom: 2px solid var(--atelier-gold);
+}
+
+.announcement p,
+.announcement a {
+    color: var(--atelier-gold-soft);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: none;
+}
+
+.announcement .status-dot {
+    background: var(--atelier-gold);
+    box-shadow: 0 0 0 3px oklch(0.728 0.138 89.7 / 0.16);
+}
+
+.site-nav,
+.site-header.is-scrolled .site-nav {
+    background: rgba(17, 22, 26, 0.96);
+    border-bottom: 1px solid var(--atelier-line);
+    box-shadow: none;
+}
+
+.primary-nav a {
+    font-size: 0.82rem;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.primary-nav a::after {
+    height: 1px;
+    background: var(--atelier-gold);
+}
+
+.brand__name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+}
+
+.brand__sub {
+    letter-spacing: 0.12em;
+    text-transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   Typography with personality
+   -------------------------------------------------------------------------- */
+
+.eyebrow {
+    color: var(--atelier-gold-soft);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: none;
+}
+
+.section-heading h2,
+.hero-title,
+.auth-heading h1,
+.workspace-topbar h1,
+.cta-band h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.section-lead,
+.hero-description,
+.field-help,
+.chatbot-messages {
+    text-wrap: pretty;
+}
+
+.btn .icon {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Softer, uneven surfaces
+   -------------------------------------------------------------------------- */
+
+.hero-carousel {
+    border: 1px solid var(--atelier-line);
+    border-radius: 30px 30px 30px 10px;
+    box-shadow: none;
+    background: var(--atelier-char-2);
+}
+
+.hero-carousel::after {
+    border-radius: 22px 22px 22px 8px;
+    border-color: var(--atelier-line);
+}
+
+.site-nav .btn--primary,
+.btn--primary {
+    --btn-bg: var(--atelier-gold);
+    --btn-border: var(--atelier-gold);
+    --btn-color: #1a1508;
+    border-radius: 999px 999px 999px 8px;
+    box-shadow: none;
+}
+
+.btn--primary:hover {
+    --btn-bg: var(--atelier-gold-soft);
+    box-shadow: none;
+}
+
+.btn--gold {
+    --btn-bg: var(--atelier-gold-soft);
+    border-radius: 8px 999px 8px 999px;
+    box-shadow: none;
+}
+
+.btn--ghost {
+    border-radius: 999px;
+    box-shadow: none;
+}
+
+.hero-kicker {
+    letter-spacing: 0.12em;
+    text-transform: none;
+}
+
+.hero-price {
+    border-radius: 999px 8px 999px 8px;
+    box-shadow: none;
+}
+
+.hero-progress__bar {
+    box-shadow: none;
+}
+
+.trust-strip {
+    border-radius: 16px 16px 16px 4px;
+    background: var(--atelier-char-2);
+    grid-template-columns: 1.08fr 0.92fr 1.04fr 0.96fr;
+}
+
+.trust-item {
+    border-radius: 0;
+}
+
+.rank-card,
+.feature-card,
+.stat-card,
+.faq-item,
+.summary-card,
+.order-builder {
+    border-radius: 18px 18px 18px 6px;
+    background: var(--atelier-char-2);
+    box-shadow: none;
+}
+
+.rank-grid .rank-card:nth-child(3n + 2) {
+    transform: translateY(7px);
+}
+
+.rank-grid .rank-card:nth-child(3n) {
+    transform: translateY(-4px);
+}
+
+.rank-card__emblem {
+    border-radius: 12px 12px 4px 12px;
+    border-color: var(--atelier-line);
+}
+
+.rank-card:has(input:checked) {
+    border-color: var(--atelier-gold);
+    box-shadow: none;
+}
+
+.rank-card__check {
+    border-radius: 8px;
+}
+
+.order-builder {
+    border-top: 1px solid var(--atelier-gold);
+    transform: translateY(10px);
+}
+
+.field input,
+.field select,
+.field textarea,
+.stepper input {
+    border-radius: 10px 10px 10px 3px;
+}
+
+/* Numbers stay aligned without looking like a spreadsheet. */
+.builder-total strong,
+.rank-card__price,
+.price,
+.total-value {
+    font-variant-numeric: tabular-nums;
+}
+
+.site-footer {
+    border-top: 1px solid var(--atelier-line);
+    background: var(--atelier-char);
+}
+
+.workspace-sidebar {
+    background: var(--atelier-char);
+}
+
+.workspace-nav a.is-active {
+    background: oklch(0.728 0.138 89.7 / 0.12);
+    border-left: 2px solid var(--atelier-gold);
+}
+
+.auth-card {
+    border-radius: 22px 22px 22px 6px;
+    background: var(--atelier-char-2);
+    box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   Chatbot
+   -------------------------------------------------------------------------- */
+
+.site-chatbot {
+    position: fixed;
+    right: clamp(16px, 3vw, 32px);
+    bottom: calc(clamp(16px, 3vw, 28px) + env(safe-area-inset-bottom, 0px));
+    z-index: 120;
+    display: grid;
+    justify-items: end;
+    gap: 10px;
+    font-family: var(--font-body);
+}
+
+.chatbot-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 48px;
+    padding: 0 18px;
+    border: 1px solid var(--atelier-gold);
+    border-radius: 999px 999px 999px 8px;
+    background: var(--atelier-gold);
+    color: #1a1508;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.9);
+}
+
+.chatbot-toggle .icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.chatbot-toggle:hover {
+    background: var(--atelier-gold-soft);
+}
+
+.chatbot-panel {
+    width: min(340px, calc(100vw - 32px));
+    overflow: hidden;
+    border: 1px solid var(--atelier-line);
+    border-radius: 20px 20px 20px 6px;
+    background: var(--atelier-char-2);
+    box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 0.95);
+}
+
+.chatbot-panel[hidden] {
+    display: none;
+}
+
+.chatbot-panel__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--atelier-line);
+}
+
+.chatbot-panel__title {
+    margin: 0;
+    color: var(--atelier-gold-soft);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.chatbot-panel__sub {
+    margin: 2px 0 0;
+    color: var(--atelier-steel);
+    font-size: 0.68rem;
+}
+
+.chatbot-close {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--atelier-line);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--atelier-steel-soft);
+    cursor: pointer;
+}
+
+.chatbot-close .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.chatbot-messages {
+    display: grid;
+    gap: 8px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.chatbot-message {
+    max-width: 88%;
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 12px 12px 12px 4px;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    white-space: pre-line;
+}
+
+.chatbot-message--bot {
+    background: var(--atelier-char);
+    border: 1px solid var(--atelier-line);
+    color: var(--atelier-steel-soft);
+}
+
+.chatbot-message--user {
+    justify-self: end;
+    background: var(--atelier-gold);
+    color: #1a1508;
+    border-radius: 12px 12px 4px 12px;
+}
+
+.chatbot-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 16px 12px;
+}
+
+.chatbot-quick button {
+    padding: 6px 10px;
+    border: 1px solid var(--atelier-line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--atelier-steel-soft);
+    font-size: 0.68rem;
+    cursor: pointer;
+}
+
+.chatbot-quick button:hover {
+    border-color: var(--atelier-gold);
+    color: var(--atelier-gold-soft);
+}
+
+.chatbot-form {
+    display: flex;
+    gap: 8px;
+    padding: 0 16px 12px;
+}
+
+.chatbot-form input {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--atelier-line);
+    border-radius: 10px 10px 10px 3px;
+    background: var(--atelier-char);
+    color: var(--atelier-steel-soft);
+    font-size: 0.78rem;
+}
+
+.chatbot-form input:focus {
+    border-color: var(--atelier-gold);
+    outline: none;
+}
+
+.chatbot-form button {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    flex: none;
+    border: 1px solid var(--atelier-gold);
+    border-radius: 10px 10px 3px 10px;
+    background: var(--atelier-gold);
+    color: #1a1508;
+    cursor: pointer;
+}
+
+.chatbot-form button .icon {
+    display: block;
+    width: 17px;
+    height: 17px;
+}
+
+.chatbot-admin {
+    display: block;
+    padding: 10px 16px 14px;
+    border-top: 1px solid var(--atelier-line);
+    color: var(--atelier-gold-soft);
+    font-size: 0.7rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+.chatbot-admin:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+    .chatbot-toggle__label {
+        display: none;
+    }
+
+    .chatbot-toggle {
+        width: 48px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .chatbot-panel {
+        width: calc(100vw - 32px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-chatbot * {
+        transition: none !important;
+    }
+}

@@ -172,11 +172,12 @@ def main():
     slide = base_slide(prs, "Solusi DS Store", number=4)
     features = [
         ("Hero carousel", "3 slide promo, autoplay 5,2 detik, arrow, dot, hover pause, swipe."),
-        ("Pricelist transparan", "GM Rp5.000 → Mythic Glory Rp20.000/bintang + Full Grading Rp150.000."),
+        ("Pricelist transparan", "Mulai dari GM Rp5.000/bintang, bukan langsung Mythic. Sampai Mythic Glory Rp20.000."),
         ("Order tervalidasi", "Form Request mengecek User ID, Server ID, WhatsApp, dan metode login."),
         ("Dashboard", "Ringkasan pesanan, timeline progres, profil, dan statistik untuk admin."),
         ("Lacak tanpa login", "Kode pesanan + WhatsApp menampilkan status terkini."),
         ("Admin workspace", "Filter pesanan, update status/pembayaran, kelola paket, lihat pelanggan."),
+        ("Chatbot ringan", "Tanya harga, cara order, lacak, dan lanjut ke admin lewat WhatsApp."),
     ]
     for i, (title, body) in enumerate(features):
         col, row = i % 3, i // 3
