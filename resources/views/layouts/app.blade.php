@@ -8,7 +8,7 @@
     <title>@yield('title', 'DS Store | Joki Akun Mobile Legends Season 42')</title>
     <meta name="description" content="@yield('description', config('site.description'))">
     <meta name="robots" content="@yield('robots', 'index, follow')">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#14181C">
     <link rel="canonical" href="@yield('canonical', url()->current())">
 
     <meta property="og:locale" content="id_ID">

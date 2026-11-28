@@ -3,7 +3,7 @@
 ## Sebelum rekam
 
 - [ ] Baca `Script-Video-Presentasi.md` dan tentukan pembagi narasi.
-- [ ] Siapkan browser dengan URL `http://127.0.0.1:8000` dan akun demo sudah bisa login.
+- [ ] Siapkan browser dengan URL `http://127.0.0.1:8000` dan akun admin sudah bisa login.
 - [ ] Tutup tab/notifikasi yang tidak perlu; aktifkan mode jangan ganggu.
 - [ ] Uji mikrofon dan kamera; pastikan audio terdengar jelas.
 - [ ] Siapkan slide PPTX dalam mode presentasi.
@@ -14,7 +14,7 @@
 - [ ] Tunjukkan cover + agenda maksimal 30 detik.
 - [ ] Tunjukkan masalah dan solusi singkat (slide 3–4).
 - [ ] Demo langsung: beranda → pricelist → kalkulator → form order → login → dashboard → lacak → admin.
-- [ ] Tampilkan hasil pengujian (18 test, 58 assertion) dan perbaikan QA.
+- [ ] Tampilkan hasil pengujian (18 test, 57 assertion) dan perbaikan QA.
 - [ ] Sampaikan cara menjalankan dan kredensial demo.
 - [ ] Tutup dengan link video/struktur folder pengumpulan.
 - [ ] Durasi target: 5–8 menit.

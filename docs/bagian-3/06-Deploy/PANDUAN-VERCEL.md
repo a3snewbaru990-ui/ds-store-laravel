@@ -56,14 +56,17 @@ Variabel non-rahasia (`APP_ENV`, `APP_DEBUG`, cache ke `/tmp`, `SESSION_DRIVER=c
 | Dashboard pelanggan | `/dashboard` |
 | Admin | `/admin` |
 
-Akun demo tetap sama:
+Akun admin di database produksi:
 
-| Peran | Email | Password |
-| --- | --- | --- |
-| Pelanggan | `demo@dsstore.id` | `password` |
-| Admin | `admin@dsstore.id` | `password` |
+| Peran | Email |
+| --- | --- |
+| Admin | `a3snewbaru990@gmail.com` |
 
-Kode pesanan demo: `DS-DEMO-001`, `DS-DEMO-002`. WhatsApp demo untuk lacak: `081200000000`.
+Tidak ada akun demo. Jika perlu membuat/reset admin, jalankan perintah berikut secara lokal dengan env `DATABASE_URL` produksi lalu deploy ulang:
+
+```powershell
+php artisan admin:create a3snewbaru990@gmail.com --name="Admin DS Store"
+```
 
 ## 6. Troubleshooting
 

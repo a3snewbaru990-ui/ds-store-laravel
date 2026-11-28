@@ -49,7 +49,7 @@
                                 aria-describedby="order_code-help @error('order_code') order_code-error @enderror"
                                 @error('order_code') aria-invalid="true" @enderror
                             >
-                            <p class="field-help" id="order_code-help">Contoh: DS-DEMO-001.</p>
+                            <p class="field-help" id="order_code-help">Contoh: DS-261128-XXXXX.</p>
                             <x-input-error name="order_code" />
                         </div>
 

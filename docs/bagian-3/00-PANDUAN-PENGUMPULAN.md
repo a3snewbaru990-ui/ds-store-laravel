@@ -73,8 +73,8 @@ Cover → Agenda → Latar belakang → Solusi → Arsitektur → Fitur Laravel 
 
 ## Catatan penting
 
-- Aplikasi **sudah terverifikasi** dengan `vendor/bin/phpunit`: **18 test, 58 assertion, lulus**.
-- Akun demo: `demo@dsstore.id` / `password` dan `admin@dsstore.id` / `password`.
-- Jika password demo tidak cocok setelah source dijalankan ulang, jalankan:
-  `php artisan db:seed --class=DemoDataSeeder --force`.
-- Seluruh screenshot diambil dari aplikasi yang berjalan pada `127.0.0.1:8000` setelah perbaikan QA terakhir.
+- Aplikasi **sudah terverifikasi** dengan `vendor/bin/phpunit`: **18 test, 57 assertion, lulus**.
+- Tidak ada akun demo. Admin dibuat sendiri dengan:
+  `php artisan admin:create a3snewbaru990@gmail.com --name="Admin DS Store"`.
+- Warna website sudah disesuaikan dengan logo: charcoal, silver, dan gold tua.
+- Seluruh screenshot diambil dari aplikasi yang berjalan pada `127.0.0.1:8000` setelah perubahan warna dan akun admin.

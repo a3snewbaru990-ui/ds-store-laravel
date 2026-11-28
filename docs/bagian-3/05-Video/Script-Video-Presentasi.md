@@ -50,7 +50,7 @@ Gunakan slide PPTX yang sesuai, lalu lanjut ke demo browser pada menit yang dite
 ## 03:45 — Demo login & order (Slide 9, browser)
 
 **Narator 2:**
-"Karena membuat pesanan memerlukan akun, pengguna yang belum login diarahkan ke halaman masuk. Kami gunakan akun demo pelanggan: `demo@dsstore.id`, password `password`. Setelah masuk, form order meminta nickname, User ID, Server ID, metode login, dan WhatsApp. Sistem memvalidasi semua input. Total tetap dihitung ulang di server, jadi tidak bergantung pada JavaScript. Setelah disubmit, muncul kode pesanan dan halaman detail."
+"Karena membuat pesanan memerlukan akun, pengguna yang belum login diarahkan ke halaman masuk. Pada demo ini kami masuk dengan akun admin `a3snewbaru990@gmail.com`; untuk pelanggan, akun dibuat lewat halaman register. Setelah masuk, form order meminta nickname, User ID, Server ID, metode login, dan WhatsApp. Sistem memvalidasi semua input. Total tetap dihitung ulang di server, jadi tidak bergantung pada JavaScript. Setelah disubmit, muncul kode pesanan dan halaman detail."
 
 ---
 
@@ -64,7 +64,7 @@ Gunakan slide PPTX yang sesuai, lalu lanjut ke demo browser pada menit yang dite
 ## 05:15 — Pengujian & QA (Slide 12–13)
 
 **Narator 1:**
-"Kami menjalankan `vendor/bin/phpunit` dengan hasil **18 test lulus dan 58 assertion**. Pengujian mencakup beranda, validasi order, total server-side, otorisasi, login logout, registrasi, pelacakan, dan pengelolaan paket. Selama quality assurance kami juga menemukan dan memperbaiki beberapa masalah nyata: akun demo yang gagal login, tombol logout yang tersembunyi, judul bagian yang tertutup header saat klik menu, menu mobile yang tembus pandang, carousel yang tidak lanjut setelah tombol jeda, serta emblem rank yang masih memiliki background putih. Semua sudah diverifikasi ulang dengan 0 error konsol."
+"Kami menjalankan `vendor/bin/phpunit` dengan hasil **18 test lulus dan 57 assertion**. Pengujian mencakup beranda, validasi order, total server-side, otorisasi, login logout, registrasi, pelacakan, dan pengelolaan paket. Selama quality assurance kami juga menemukan dan memperbaiki beberapa masalah nyata: tombol logout yang tersembunyi, judul bagian yang tertutup header saat klik menu, menu mobile yang tembus pandang, carousel yang tidak lanjut setelah tombol jeda, emblem rank yang masih memiliki background putih, dan akun demo yang akhirnya kami hapus. Semua sudah diverifikasi ulang dengan 0 error konsol."
 
 ---
 

@@ -1,0 +1,504 @@
+/* ==========================================================================
+   DS Store — UI Model 2: "The Forge"
+   Brushed steel, antique gold, and charcoal. Applied after all other layers.
+   ========================================================================== */
+
+:root {
+    color-scheme: dark;
+    accent-color: oklch(0.728 0.138 89.7);
+
+    /* Role tokens: hex first as fallback, OKLCH as the working value. */
+    --forge-accent: #c9a227;
+    --forge-accent: oklch(0.728 0.138 89.7);
+    --forge-accent-bright: oklch(0.843 0.119 91.5);
+    --forge-accent-soft: oklch(0.883 0.087 88.4);
+    --forge-accent-deep: oklch(0.549 0.096 86.5);
+
+    --forge-steel: oklch(0.716 0.017 239.2);
+    --forge-steel-soft: oklch(0.854 0.011 243.7);
+    --forge-steel-bright: oklch(0.928 0.008 241.7);
+
+    --forge-char: oklch(0.207 0.010 248.3);
+    --forge-char-2: oklch(0.240 0.015 248.4);
+    --forge-char-3: oklch(0.281 0.016 248.4);
+
+    --forge-text: oklch(0.966 0.003 247.9);
+    --forge-on-accent: oklch(0.198 0.025 89.2);
+
+    --forge-line: oklch(0.728 0.138 89.7 / 0.24);
+    --forge-line-strong: oklch(0.728 0.138 89.7 / 0.42);
+}
+
+html {
+    background: var(--forge-char);
+}
+
+body.site-body {
+    background:
+        radial-gradient(ellipse 70% 42% at 8% -4%, rgba(201, 162, 39, 0.11), transparent 70%),
+        radial-gradient(ellipse 50% 36% at 96% 8%, rgba(154, 165, 173, 0.08), transparent 70%),
+        repeating-linear-gradient(in oklab 135deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 7px),
+        var(--forge-char);
+}
+
+/* --------------------------------------------------------------------------
+   Forge header
+   -------------------------------------------------------------------------- */
+
+.site-header {
+    box-shadow: 0 16px 36px -28px rgba(0, 0, 0, 0.95);
+}
+
+.announcement {
+    background: linear-gradient(in oklab 90deg, var(--forge-accent-deep), var(--forge-accent) 50%, var(--forge-accent-deep));
+    border-bottom: 1px solid var(--forge-accent-bright);
+}
+
+.site-header.is-scrolled .announcement {
+    background: linear-gradient(in oklab 90deg, #6f5820, #a98724 50%, #6f5820);
+}
+
+.announcement p,
+.announcement a {
+    color: #171208;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.announcement .status-dot {
+    background: #171208;
+    box-shadow: 0 0 0 3px rgba(23, 18, 8, 0.16);
+}
+
+.site-nav {
+    background: linear-gradient(in oklab 180deg, var(--forge-char-2), var(--forge-char));
+    border-bottom: 1px solid var(--forge-line-strong);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.site-header.is-scrolled .site-nav {
+    background: linear-gradient(in oklab 180deg, #1c2329, #11161a);
+    box-shadow: 0 22px 50px -34px rgba(0, 0, 0, 0.95);
+}
+
+.brand__mark {
+    filter: drop-shadow(0 8px 18px rgba(201, 162, 39, 0.3));
+}
+
+.brand__name strong {
+    color: var(--forge-accent-bright);
+}
+
+.brand__sub {
+    color: var(--forge-steel);
+    letter-spacing: 0.22em;
+}
+
+.primary-nav a {
+    color: var(--forge-steel-soft);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.primary-nav a::after {
+    height: 2px;
+    background: linear-gradient(in oklab 90deg, var(--forge-accent), var(--forge-accent-bright));
+}
+
+.nav-login {
+    color: var(--forge-steel-soft);
+    letter-spacing: 0.06em;
+}
+
+.nav-user {
+    border-color: var(--forge-line);
+    background: rgba(26, 32, 38, 0.8);
+}
+
+.nav-user__avatar {
+    background: linear-gradient(in oklab 135deg, var(--forge-accent-soft), var(--forge-accent));
+    color: #1a1508;
+}
+
+.nav-logout {
+    border-color: var(--forge-line);
+    background: rgba(26, 32, 38, 0.8);
+}
+
+.nav-logout:hover {
+    border-color: rgba(248, 113, 133, 0.55);
+    color: #fecdd3;
+}
+
+.nav-toggle {
+    border-color: var(--forge-line-strong);
+    background: rgba(26, 32, 38, 0.8);
+    color: var(--forge-accent-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Forge buttons
+   -------------------------------------------------------------------------- */
+
+.btn--primary {
+    --btn-bg: linear-gradient(in oklab 135deg, var(--forge-accent-bright) 0%, var(--forge-accent) 55%, var(--forge-accent-deep) 100%);
+    --btn-border: rgba(240, 214, 150, 0.7);
+    --btn-color: #1a1508;
+    box-shadow: 0 14px 36px -18px rgba(201, 162, 39, 0.7);
+    letter-spacing: 0.02em;
+}
+
+.btn--primary:hover {
+    box-shadow: 0 20px 46px -18px rgba(201, 162, 39, 0.9);
+    color: #120e04;
+}
+
+.btn--gold {
+    --btn-bg: linear-gradient(in oklab 135deg, var(--forge-accent-soft) 0%, var(--forge-accent) 60%, var(--forge-accent-deep) 100%);
+    --btn-border: rgba(240, 214, 150, 0.75);
+    --btn-color: #1a1508;
+}
+
+.btn--ghost {
+    --btn-bg: rgba(26, 32, 38, 0.75);
+    --btn-border: var(--forge-line-strong);
+    --btn-color: var(--forge-steel-soft);
+}
+
+.btn--ghost:hover {
+    --btn-border: var(--forge-accent);
+    --btn-color: var(--forge-accent-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Forge hero
+   -------------------------------------------------------------------------- */
+
+.hero-carousel {
+    border: 1px solid var(--forge-line-strong);
+    background: var(--forge-char);
+    box-shadow:
+        0 50px 120px -60px rgba(0, 0, 0, 0.95),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.hero-carousel::after {
+    border-color: rgba(201, 162, 39, 0.3);
+}
+
+.hero-slide__shade {
+    background:
+        linear-gradient(in oklab 
+            90deg,
+            var(--forge-char) 0%,
+            oklch(0.207 0.010 248.3 / 0.98) 24%,
+            oklch(0.207 0.010 248.3 / 0.93) 40%,
+            oklch(0.207 0.010 248.3 / 0.74) 56%,
+            oklch(0.207 0.010 248.3 / 0.36) 76%,
+            oklch(0.207 0.010 248.3 / 0.06) 100%
+        ),
+        linear-gradient(in oklab 0deg, var(--forge-char) 0%, oklch(0.207 0.010 248.3 / 0.6) 12%, transparent 42%),
+        radial-gradient(ellipse 55% 70% at 12% 40%, oklch(0.728 0.138 89.7 / 0.1), transparent 70%);
+}
+
+.hero-kicker {
+    color: var(--forge-accent-bright);
+    letter-spacing: 0.24em;
+}
+
+.hero-kicker__line {
+    width: 38px;
+    background: linear-gradient(in oklab 90deg, var(--forge-accent), var(--forge-accent-bright));
+}
+
+.hero-title {
+    color: #f7f8f9;
+    letter-spacing: -0.025em;
+    text-shadow: 0 2px 0 rgba(138, 109, 36, 0.28), 0 18px 50px rgba(0, 0, 0, 0.6);
+}
+
+.hero-description {
+    color: var(--forge-steel-soft);
+}
+
+.hero-price {
+    border-color: var(--forge-line-strong);
+    background: linear-gradient(in oklab 135deg, rgba(201, 162, 39, 0.2), rgba(201, 162, 39, 0.05));
+    color: var(--forge-accent-soft);
+    box-shadow: inset 0 1px 0 rgba(240, 214, 150, 0.08);
+}
+
+.hero-assurance span {
+    color: var(--forge-steel);
+}
+
+.hero-progress__bar {
+    background: linear-gradient(in oklab 90deg, var(--forge-accent-bright), var(--forge-accent));
+    box-shadow: 0 0 12px rgba(201, 162, 39, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   Forge sections & cards
+   -------------------------------------------------------------------------- */
+
+.eyebrow {
+    color: var(--forge-accent-bright);
+    letter-spacing: 0.2em;
+}
+
+.section-heading h2,
+.auth-heading h1,
+.workspace-topbar h1 {
+    color: #f4f6f7;
+    letter-spacing: -0.02em;
+}
+
+.section-lead {
+    color: var(--forge-steel-soft);
+}
+
+.section-note {
+    border-color: var(--forge-line-strong);
+    background: linear-gradient(in oklab 135deg, rgba(201, 162, 39, 0.14), rgba(201, 162, 39, 0.03));
+    color: var(--forge-accent-soft);
+}
+
+.trust-strip {
+    border-color: var(--forge-line);
+    background: linear-gradient(in oklab 180deg, var(--forge-char-2), var(--forge-char));
+}
+
+.trust-item {
+    border-right-color: rgba(201, 162, 39, 0.15);
+}
+
+.trust-item .icon,
+.trust-item > span:first-child {
+    border-color: var(--forge-line-strong);
+    background: rgba(201, 162, 39, 0.08);
+    color: var(--forge-accent-bright);
+}
+
+.rank-card,
+.feature-card,
+.stat-card,
+.faq-item,
+.summary-card,
+.order-builder,
+.grading-card {
+    background: linear-gradient(in oklab 160deg, rgba(35, 42, 49, 0.96), rgba(20, 24, 28, 0.96));
+    border-color: var(--forge-line);
+}
+
+.rank-card:has(input:checked) {
+    border-color: var(--forge-accent);
+    box-shadow:
+        0 0 0 1px rgba(201, 162, 39, 0.18),
+        0 20px 44px -30px rgba(201, 162, 39, 0.6);
+}
+
+.rank-card:has(input:focus-visible) {
+    outline-color: var(--forge-accent-bright);
+}
+
+.rank-card__emblem {
+    border-color: var(--forge-line-strong);
+    background: radial-gradient(circle at 50% 35%, rgba(201, 162, 39, 0.18), rgba(10, 13, 16, 0.65) 70%);
+}
+
+.rank-card__check {
+    border-color: var(--forge-line-strong);
+}
+
+.rank-card:has(input:checked) .rank-card__check {
+    border-color: var(--forge-accent);
+    background: linear-gradient(in oklab 135deg, var(--forge-accent-bright), var(--forge-accent));
+    color: #1a1508;
+}
+
+.rank-card__price,
+.badge--gold,
+.hero-price {
+    color: var(--forge-accent-soft);
+}
+
+.order-builder {
+    border-top: 2px solid var(--forge-accent);
+}
+
+.builder-total strong,
+.summary-card strong,
+.price {
+    color: var(--forge-accent-soft);
+}
+
+.stepper button,
+.field input,
+.field select,
+.field textarea {
+    border-color: var(--forge-line-strong);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.order-builder input:focus {
+    border-color: var(--forge-accent) !important;
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.14) !important;
+}
+
+.checkbox-row input:checked {
+    accent-color: var(--forge-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Forge workspace
+   -------------------------------------------------------------------------- */
+
+.workspace-sidebar {
+    background: linear-gradient(in oklab 180deg, var(--forge-char-2), var(--forge-char));
+    border-right: 1px solid var(--forge-line-strong);
+}
+
+.workspace-nav a.is-active {
+    background: linear-gradient(in oklab 90deg, rgba(201, 162, 39, 0.22), transparent);
+    border-left: 2px solid var(--forge-accent);
+    color: var(--forge-accent-soft);
+}
+
+.workspace-nav a:hover {
+    color: var(--forge-accent-soft);
+}
+
+.workspace-user__avatar {
+    background: linear-gradient(in oklab 135deg, var(--forge-accent-soft), var(--forge-accent));
+    color: #1a1508;
+}
+
+.workspace-logout {
+    border-color: var(--forge-line-strong);
+    color: var(--forge-steel-soft);
+}
+
+.workspace-topbar {
+    border-bottom: 1px solid var(--forge-line);
+}
+
+.table thead th {
+    border-bottom-color: var(--forge-line-strong);
+    color: var(--forge-steel);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.64rem;
+}
+
+/* --------------------------------------------------------------------------
+   Forge auth & footer
+   -------------------------------------------------------------------------- */
+
+.auth-visual {
+    background: var(--forge-char);
+}
+
+.auth-visual__shade {
+    background:
+        linear-gradient(in oklab 180deg, rgba(17, 22, 26, 0.35), rgba(17, 22, 26, 0.75) 50%, rgba(17, 22, 26, 0.97)),
+        linear-gradient(in oklab 90deg, rgba(17, 22, 26, 0.65), transparent 80%);
+}
+
+.auth-card {
+    background: linear-gradient(in oklab 160deg, var(--forge-char-3), var(--forge-char));
+    border: 1px solid var(--forge-line-strong);
+    box-shadow: 0 40px 100px -60px rgba(0, 0, 0, 0.95);
+}
+
+.auth-card__brand {
+    color: var(--forge-accent-soft);
+}
+
+.auth-back,
+.auth-panel__footer a {
+    color: var(--forge-accent-bright);
+}
+
+.site-footer {
+    border-top: 2px solid var(--forge-accent);
+    background: linear-gradient(in oklab 180deg, var(--forge-char), #0a0d10);
+}
+
+.social-link:hover {
+    border-color: var(--forge-accent);
+    color: var(--forge-accent-soft);
+}
+
+.text-link {
+    color: var(--forge-accent-bright);
+}
+
+/* --------------------------------------------------------------------------
+   Forge responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+    .primary-nav {
+        background: #14181c;
+        border-top: 1px solid var(--forge-line-strong);
+        border-bottom: 1px solid var(--forge-line-strong);
+    }
+
+    .primary-nav__mobile-actions .is-primary {
+        border-color: var(--forge-line-strong);
+        background: linear-gradient(in oklab 135deg, rgba(201, 162, 39, 0.22), rgba(201, 162, 39, 0.05));
+        color: var(--forge-accent-soft);
+    }
+
+    .primary-nav__mobile-actions .mobile-logout {
+        border-color: rgba(248, 113, 133, 0.35);
+    }
+
+    .nav-toggle {
+        border-color: var(--forge-line-strong);
+    }
+}
+
+@media (max-width: 560px) {
+    .announcement p,
+    .announcement a {
+        font-size: 0.56rem;
+    }
+
+    .hero-title {
+        letter-spacing: -0.03em;
+    }
+
+    .trust-strip {
+        background: var(--forge-char-2);
+    }
+}
+
+/* Increased-contrast remap: role tokens only, no component rewrites. */
+@media (prefers-contrast: more) {
+    :root {
+        --forge-steel: var(--forge-steel-soft);
+        --forge-steel-soft: var(--forge-steel-bright);
+        --forge-line: oklch(0.728 0.138 89.7 / 0.55);
+        --forge-line-strong: oklch(0.728 0.138 89.7 / 0.85);
+    }
+
+    .rank-card,
+    .feature-card,
+    .stat-card,
+    .faq-item,
+    .summary-card,
+    .order-builder,
+    .auth-card {
+        background: #0a0d10;
+        border-color: var(--forge-line-strong);
+    }
+
+    .hero-slide__shade {
+        background: #0a0d10;
+    }
+}

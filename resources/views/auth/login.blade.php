@@ -62,12 +62,4 @@
     </form>
 
     <p class="auth-switch">Belum punya akun? <a href="{{ route('register') }}">Daftar sekarang</a></p>
-
-    <details class="demo-account" open>
-        <summary>Akun demo untuk penguji</summary>
-        <div class="demo-account__body">
-            <p><span>Pelanggan</span><code>demo@dsstore.id</code><code>password</code></p>
-            <p><span>Admin</span><code>admin@dsstore.id</code><code>password</code></p>
-        </div>
-    </details>
 @endsection

@@ -12,14 +12,14 @@ OUT = Path(__file__).resolve().parents[1] / "docs" / "bagian-3" / "03-Screenshot
 def login(page, email: str) -> None:
     page.goto(f"{BASE}/login", wait_until="networkidle")
     page.fill("#email", email)
-    page.fill("#password", "password")
+    page.fill("#password", "DsStore2026!")
     page.get_by_role("button", name="Masuk ke dashboard").click()
     page.wait_for_load_state("networkidle")
 
 
 def submit_tracking(page) -> None:
-    page.fill("#order_code", "DS-DEMO-001")
-    page.fill("#whatsapp", "081200000000")
+    page.fill("#order_code", "DS-261128-ABC12")
+    page.fill("#whatsapp", "081807283181")
     page.get_by_role("button", name="Cek status pesanan").click()
     page.wait_for_load_state("networkidle")
 
@@ -52,14 +52,14 @@ def main() -> None:
             ("02-home-mobile.png", "/", 390, 844, None, None),
             ("03-mobile-nav.png", "/", 390, 844, None, lambda pg: pg.locator("[data-nav-toggle]").click()),
             ("04-login.png", "/login", 1440, 1100, None, None),
-            ("05-order-form.png", "/order/mythic", 1440, 1600, "demo@dsstore.id", None),
+            ("05-order-form.png", "/order/mythic", 1440, 1600, "a3snewbaru990@gmail.com", None),
             ("06-tracking-result.png", "/lacak", 1440, 1500, None, submit_tracking),
-            ("07-customer-dashboard.png", "/dashboard", 1440, 1200, "demo@dsstore.id", None),
-            ("08-customer-order-detail.png", "/dashboard/orders/1", 1440, 1500, "demo@dsstore.id", None),
-            ("09-admin-dashboard.png", "/admin", 1440, 1250, "admin@dsstore.id", None),
-            ("10-admin-orders.png", "/admin/orders", 1440, 1150, "admin@dsstore.id", None),
-            ("11-admin-packages.png", "/admin/packages", 1440, 1150, "admin@dsstore.id", None),
-            ("12-admin-order-detail.png", "/admin/orders/1", 1440, 1600, "admin@dsstore.id", None),
+            ("07-customer-dashboard.png", "/dashboard", 1440, 1200, "a3snewbaru990@gmail.com", None),
+            ("08-customer-order-detail.png", "/dashboard/orders/1", 1440, 1500, "a3snewbaru990@gmail.com", None),
+            ("09-admin-dashboard.png", "/admin", 1440, 1250, "a3snewbaru990@gmail.com", None),
+            ("10-admin-orders.png", "/admin/orders", 1440, 1150, "a3snewbaru990@gmail.com", None),
+            ("11-admin-packages.png", "/admin/packages", 1440, 1150, "a3snewbaru990@gmail.com", None),
+            ("12-admin-order-detail.png", "/admin/orders/1", 1440, 1600, "a3snewbaru990@gmail.com", None),
         ]
 
         for name, url, width, height, auth, action in jobs:

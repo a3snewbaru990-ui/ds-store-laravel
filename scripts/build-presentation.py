@@ -14,15 +14,15 @@ SHOTS = ROOT / "docs" / "bagian-3" / "03-Screenshots"
 OUT = ROOT / "docs" / "bagian-3" / "02-Presentasi" / "Presentasi-DS-Store.pptx"
 LOGO = ROOT / "public" / "images" / "logo-mark.png"
 
-BG = RGBColor(9, 16, 28)
-PANEL = RGBColor(15, 27, 44)
-CYAN = RGBColor(6, 182, 212)
-CYAN_SOFT = RGBColor(165, 243, 252)
-GOLD = RGBColor(245, 158, 11)
-GOLD_SOFT = RGBColor(253, 230, 138)
-WHITE = RGBColor(237, 246, 253)
-MUTED = RGBColor(140, 164, 185)
-LINE = RGBColor(35, 58, 82)
+BG = RGBColor(17, 22, 26)
+PANEL = RGBColor(26, 32, 38)
+CYAN = RGBColor(154, 165, 173)
+CYAN_SOFT = RGBColor(227, 232, 236)
+GOLD = RGBColor(201, 162, 39)
+GOLD_SOFT = RGBColor(240, 214, 150)
+WHITE = RGBColor(242, 244, 246)
+MUTED = RGBColor(154, 165, 173)
+LINE = RGBColor(58, 67, 75)
 
 W, H = 13.333, 7.5
 
@@ -139,7 +139,7 @@ def main():
         ("03", "Arsitektur & Laravel", "MVC, Eloquent, Blade, middleware"),
         ("04", "Tampilan & alur order", "Dari pricelist sampai dashboard"),
         ("05", "Pengujian & QA", "18 test, perbaikan nyata, responsif"),
-        ("06", "Pengumpulan & demo", "Struktur folder, akun, video"),
+        ("06", "Pengumpulan & demo", "Struktur folder, admin, video"),
     ]
     for i, (num, heading, sub) in enumerate(items):
         y = 1.55 + i * 0.84
@@ -213,7 +213,7 @@ def main():
         "Routing (26 rute, group auth/admin)",
         "Controller (publik, auth, dashboard, admin)",
         "Eloquent ORM + relasi & accessor",
-        "Migration + Seeder (demo & pricelist)",
+        "Migration + Seeder (paket & promosi)",
         "Blade layout, partial, component",
         "Middleware admin & throttle",
         "Form Request + validasi Bahasa Indonesia",
@@ -221,7 +221,7 @@ def main():
         "CSRF, hash password, password toggle",
         "Vite build untuk CSS & JavaScript",
         "Config terpusat di config/site.php",
-        "Testing: 18 test, 58 assertion",
+        "Testing: 18 test, 57 assertion",
     ]
     for i, item in enumerate(laravel):
         col, row = i % 3, i // 3
@@ -286,7 +286,7 @@ def main():
     slide = base_slide(prs, "Pelacakan & Perbaikan QA", number=11)
     fit_picture(slide, "06-tracking-result.png", 0.65, 1.5, 7.2, 5.2)
     panel(slide, 8.15, 1.55, 4.5, 2.4, "Perbaikan penting",
-          "• Akun demo gagal login → seeder ulang + test\n"
+          "• Akun demo dihapus → admin:create dengan email pemilik\n"
           "• Logout tersembunyi → tombol di header & drawer\n"
           "• Anchor tertutup header → scroll-padding",
           accent=CYAN, body_size=12)
@@ -310,28 +310,27 @@ def main():
     text(slide, 9.0, 2.85, 3.4, 0.4, "error konsol / 4xx", size=14, color=WHITE, align=PP_ALIGN.CENTER)
     panel(slide, 0.65, 3.85, 12.0, 2.4, "Cakupan pengujian",
           "Beranda & pricelist · validasi order · total server-side · otorisasi pelanggan/admin · "
-          "login & logout akun demo · registrasi · pelacakan · update status admin · perlindungan paket · "
+          "login & logout admin · registrasi · pelacakan · update status admin · perlindungan paket · "
           "responsif 390/768/1024/1440 px.",
           accent=CYAN, body_size=14)
 
     # 13 — Cara menjalankan
-    slide = base_slide(prs, "Cara Menjalankan & Akun Demo", number=13)
+    slide = base_slide(prs, "Cara Menjalankan & Akun Admin", number=13)
     panel(slide, 0.65, 1.55, 6.6, 4.8, "Langkah singkat",
-          "composer install\n"
-          "npm install\n"
+          "composer install && npm install\n"
           "cp .env.example .env && php artisan key:generate\n"
           "php artisan migrate:fresh --seed --force\n"
+          "php artisan admin:create a3snewbaru990@gmail.com\n"
           "npm run build\n"
           "php artisan serve --host=127.0.0.1 --port=8000",
           accent=CYAN, body_size=13)
-    panel(slide, 7.5, 1.55, 5.15, 4.8, "Akun demo",
-          "Pelanggan\n"
-          "demo@dsstore.id / password\n\n"
-          "Admin\n"
-          "admin@dsstore.id / password\n\n"
-          "Pesanan demo\n"
-          "DS-DEMO-001, DS-DEMO-002\n"
-          "WhatsApp demo: 081200000000",
+    panel(slide, 7.5, 1.55, 5.15, 4.8, "Akun admin",
+          "Email\n"
+          "a3snewbaru990@gmail.com\n\n"
+          "Password\n"
+          "Dibuat interaktif saat admin:create\n\n"
+          "Catatan\n"
+          "Tidak ada akun demo. Pelanggan\nmendaftar mandiri lewat /register.",
           accent=GOLD, body_size=13)
 
     # 14 — Submission

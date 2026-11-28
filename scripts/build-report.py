@@ -245,7 +245,7 @@ def preface(doc: Document) -> None:
     )
     doc.add_paragraph(
         "Laporan ini juga menjadi catatan perbaikan kualitas selama proses quality assurance, "
-        "termasuk perbaikan alur login/logout demo, navigasi anchor, tampilan drawer mobile, "
+        "termasuk perbaikan alur login/logout admin, navigasi anchor, tampilan drawer mobile, "
         "stabilitas carousel, dan penghapusan background pada emblem rank."
     )
     doc.add_paragraph(
@@ -379,7 +379,7 @@ def chapter2(doc: Document) -> None:
         "Eloquent ORM memetakan tabel database ke kelas Model sehingga operasi data dapat "
         "ditulis dalam PHP. Migration berfungsi sebagai versi skema database yang dapat "
         "dijalankan berulang kali, sedangkan Seeder mengisi data awal seperti paket joki, "
-        "slide promosi, akun demo, dan pesanan contoh."
+        "slide promosi dan paket joki. Akun admin dibuat terpisah melalui perintah Artisan."
     )
 
     doc.add_heading("2.3 Blade, Component, dan Vite", level=2)
@@ -507,19 +507,36 @@ def chapter3(doc: Document) -> None:
 
     doc.add_heading("3.5 Desain Antarmuka", level=2)
     doc.add_paragraph(
-        "Identitas visual memakai palet dark slate #0F172A, cyan #06B6D4, dan gold #F59E0B. "
-        "Tipografi memakai Bai Jamjuree untuk judul dan Manrope untuk teks tubuh. Tata letak "
-        "menggunakan frame angular, kartu dengan border halus, dan efek glow tipis agar "
-        "kesan esports/portal command center terasa kuat tanpa berlebihan."
+        "Model antarmuka yang dipakai adalah “The Forge”: permukaan charcoal metal, aksen "
+        "silver yang dipoles, dan emas antik yang diambil langsung dari logo DS Store. "
+        "Token warna didefinisikan dalam OKLCH agar kestabilan hue dan kontras dapat "
+        "diperhitungkan, dengan fallback hex untuk kompatibilitas. Tipografi memakai "
+        "Bai Jamjuree untuk judul dan Manrope untuk teks tubuh. Label kecil uppercase "
+        "dan garis emas memberi kesan lencana/guild premium, bukan lagi kesan command center biru."
+    )
+    add_table(
+        doc,
+        ["Peran warna", "Nilai OKLCH", "Hex fallback", "Penggunaan"],
+        [
+            ["Accent / emas", "oklch(0.728 0.138 89.7)", "#C9A227", "Tombol utama, border aktif, price tag"],
+            ["Accent bright", "oklch(0.843 0.119 91.5)", "#E8C96B", "Hover, kicker, ikon penting"],
+            ["Steel", "oklch(0.716 0.017 239.2)", "#9AA5AD", "Teks sekunder, edge field"],
+            ["Charcoal", "oklch(0.207 0.010 248.3)", "#14181C", "Latar halaman & panel"],
+        ],
+        widths=[1.3, 1.9, 1.2, 2.2],
+    )
+    doc.add_paragraph(
+        "Audit kontras menunjukkan teks tubuh 16,18:1, teks sekunder 11,68:1, teks muted 7,10:1, "
+        "dan label tombol emas 7,52:1—seluruhnya di atas ambang WCAG AA 4,5:1."
     )
     add_table(
         doc,
         ["Elemen", "Keputusan Desain"],
         [
-            ["Hero", "Banner lebar 16:9 pada desktop, tumpuk pada layar ≤ 860 px"],
-            ["Pricelist", "Kartu rank 2 kolom + panel estimator di samping"],
-            ["Dashboard", "Sidebar gelap, kartu metrik, tabel pesanan, timeline status"],
-            ["Mobile", "Navigasi drawer, kartu satu kolom, tombol WhatsApp mengambang"],
+            ["Hero", "Banner lebar 16:9, scrim enam stop, headline putih, kicker emas"],
+            ["Pricelist", "Kartu pelat silver dengan border emas saat dipilih + panel estimator"],
+            ["Dashboard", "Sidebar charcoal, penanda aktif emas, panel metal"],
+            ["Mobile", "Navigasi drawer charcoal dengan aksi utama emas"],
         ],
         widths=[1.5, 5.1],
     )
@@ -603,7 +620,7 @@ $totalPrice = $package->isStarPackage()
         "tersedia di header publik saat pengguna sudah login, pada sidebar workspace, dan pada "
         "drawer mobile. Seluruh form logout memakai method POST dan token CSRF."
     )
-    add_image(doc, "04-login.png", "Gambar 4.3 Halaman login dengan akun demo untuk penguji")
+    add_image(doc, "04-login.png", "Gambar 4.3 Halaman login DS Store")
     add_image(doc, "07-customer-dashboard.png", "Gambar 4.4 Dashboard pelanggan")
 
     doc.add_heading("4.3.4 Pelacakan dan Admin", level=3)
@@ -625,7 +642,7 @@ $totalPrice = $package->isStarPackage()
             ["Controller", "HomeController, OrderController, DashboardController, Admin\\*Controller, Auth\\*Controller"],
             ["Model & Eloquent", "User, ServicePackage, Order, OrderEvent, HeroSlide dengan relasi dan accessor"],
             ["Migration", "Skema users tambahan, hero_slides, service_packages, orders, order_events"],
-            ["Seeder", "HeroSlideSeeder, ServicePackageSeeder, DemoDataSeeder"],
+            ["Seeder", "HeroSlideSeeder, ServicePackageSeeder"],
             ["Blade & Component", "Layout app/workspace/auth, partial home, komponen icon/flash/input-error"],
             ["Middleware", "auth, guest, admin (EnsureUserIsAdmin), throttle"],
             ["Form Request", "StoreOrderRequest dengan aturan dan pesan error Bahasa Indonesia"],
@@ -648,9 +665,9 @@ $totalPrice = $package->isStarPackage()
         ["Masalah", "Akar Masalah", "Perbaikan"],
         [
             [
-                "Akun demo pelanggan gagal login",
-                "Hash password pada database demo tidak lagi cocok dengan 'password'",
-                "DemoDataSeeder dijalankan ulang dan ditambah test otomatis demo login/logout",
+                "Akun demo tidak sesuai kebutuhan",
+                "Akun demo bersifat umum dan tidak mewakili pemilik toko",
+                "Akun demo dihapus; admin dibuat dengan perintah admin:create menggunakan email pemilik",
             ],
             [
                 "Tombol login/logout sulit ditemukan",
@@ -718,7 +735,7 @@ def chapter5(doc: Document) -> None:
             ["3", "Tombol jeda menahan slide; setelah dilepas dan kursor keluar, autoplay lanjut", "Lulus"],
             ["4", "Klik menu Pricelist mengarah ke #pricelist dengan judul tidak tertutup header", "Lulus"],
             ["5", "Drawer mobile terbuka, tautan menutup drawer setelah diklik", "Lulus"],
-            ["6", "Login pelanggan demo menuju /dashboard", "Lulus"],
+            ["6", "Login admin menuju /dashboard dan /admin", "Lulus"],
             ["7", "Login admin menuju /admin", "Lulus"],
             ["8", "Logout dari header publik, sidebar workspace, dan drawer mobile", "Lulus"],
             ["9", "Kalkulator pricelist mengubah total sesuai rank dan bintang", "Lulus"],
@@ -740,7 +757,7 @@ def chapter5(doc: Document) -> None:
     add_code(
         doc,
         """
-Tests:    18 passed (58 assertions)
+Tests:    18 passed (57 assertions)
 Duration: ~20s
 
 PASS  Tests\\Unit\\ExampleTest
@@ -751,7 +768,7 @@ PASS  Tests\\Feature\\StorefrontTest       (11 tests)
     )
     doc.add_paragraph(
         "Pengujian otomatis mencakup halaman beranda, validasi order, perhitungan total server-side, "
-        "perlindungan order antarpelanggan, autentikasi demo, login admin, registrasi, otorisasi admin, "
+        "perlindungan order antarpelanggan, autentikasi admin, registrasi, otorisasi admin, "
         "pembaruan status, pembuatan paket, dan perlindungan penghapusan paket."
     )
 
@@ -787,7 +804,7 @@ def chapter6(doc: Document) -> None:
         "seeder, Blade, middleware, validasi, autentikasi, otorisasi, hingga pengujian otomatis."
     )
     doc.add_paragraph(
-        "Proses QA menemukan beberapa masalah nyata—akun demo gagal login, tombol logout tersembunyi, "
+        "Proses QA menemukan beberapa masalah nyata—tombol logout tersembunyi, "
         "anchor tertutup header, dropdown mobile tembus pandang, dan carousel tidak melanjutkan "
         "setelah jeda. Seluruh masalah telah diperbaiki dan diverifikasi ulang dengan pengujian "
         "otomatis maupun browser."
@@ -821,18 +838,18 @@ def references_and_appendix(doc: Document) -> None:
         ],
     )
 
-    doc.add_heading("LAMPIRAN A  KREDENSIAL DEMO", level=1)
+    doc.add_heading("LAMPIRAN A  AKUN ADMIN", level=1)
     add_table(
         doc,
-        ["Peran", "Email", "Password", "Tujuan"],
+        ["Peran", "Email", "Cara membuat", "Tujuan"],
         [
-            ["Pelanggan", "demo@dsstore.id", "password", "Melihat dashboard dan pesanan demo"],
-            ["Admin", "admin@dsstore.id", "password", "Mengelola pesanan dan paket"],
+            ["Admin", "a3snewbaru990@gmail.com", "php artisan admin:create", "Mengelola pesanan dan paket"],
+            ["Pelanggan", "Dibuat mandiri", "Halaman /register", "Membuat dan memantau pesanan"],
         ],
-        widths=[1.1, 2.0, 1.1, 2.4],
+        widths=[1.1, 2.2, 1.8, 2.3],
     )
     doc.add_paragraph(
-        "Kode pesanan demo: DS-DEMO-001 dan DS-DEMO-002. Nomor WhatsApp demo yang dipakai saat order: 081200000000."
+        "Tidak ada akun demo. Password admin dibuat interaktif melalui perintah Artisan dan tidak disimpan di dalam repository."
     )
 
     doc.add_heading("LAMPIRAN B  STRUKTUR PENGUMPULAN", level=1)
@@ -858,7 +875,7 @@ docs/bagian-3/
             ["01-home-desktop.png", "Beranda desktop: hero + pricelist"],
             ["02-home-mobile.png", "Beranda mobile"],
             ["03-mobile-nav.png", "Drawer navigasi mobile"],
-            ["04-login.png", "Halaman login dengan akun demo"],
+            ["04-login.png", "Halaman login DS Store (model The Forge)"],
             ["05-order-form.png", "Form order dan ringkasan total"],
             ["06-tracking-result.png", "Hasil pelacakan pesanan"],
             ["07-customer-dashboard.png", "Dashboard pelanggan"],

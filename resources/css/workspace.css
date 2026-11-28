@@ -4,7 +4,7 @@
 
 .workspace-body {
     background:
-        radial-gradient(ellipse 60% 38% at 90% 0%, rgba(6, 182, 212, 0.07), transparent 70%),
+        radial-gradient(ellipse 60% 38% at 90% 0%, rgba(154, 165, 173, 0.07), transparent 70%),
         var(--ink-950);
     min-height: 100vh;
 }
@@ -26,8 +26,8 @@
     height: 100vh;
     border-right: 1px solid var(--line);
     background:
-        radial-gradient(ellipse 80% 28% at 50% 0%, rgba(6, 182, 212, 0.06), transparent 70%),
-        linear-gradient(180deg, #0a1524, #060e19);
+        radial-gradient(ellipse 80% 28% at 50% 0%, rgba(154, 165, 173, 0.06), transparent 70%),
+        linear-gradient(180deg, #1B2025, #0B0F12);
 }
 
 .workspace-sidebar__head {
@@ -124,12 +124,12 @@
 
 .workspace-nav a:hover {
     color: var(--text);
-    background: rgba(148, 190, 214, 0.055);
+    background: rgba(170, 178, 185, 0.055);
 }
 
 .workspace-nav a.is-active {
-    border-color: rgba(6, 182, 212, 0.2);
-    background: linear-gradient(90deg, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.03));
+    border-color: rgba(154, 165, 173, 0.2);
+    background: linear-gradient(90deg, rgba(154, 165, 173, 0.15), rgba(154, 165, 173, 0.03));
     color: var(--cyan-soft);
 }
 
@@ -158,7 +158,7 @@
     flex: none;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--cyan-soft), var(--cyan));
-    color: #04121b;
+    color: #0A0D10;
     font-family: var(--font-display);
     font-size: 0.76rem;
     font-weight: 700;
@@ -281,8 +281,8 @@ body.drawer-open {
 }
 
 .workspace-menu:hover {
-    border-color: rgba(34, 211, 238, 0.4);
-    background: rgba(6, 182, 212, 0.07);
+    border-color: rgba(195, 204, 211, 0.4);
+    background: rgba(154, 165, 173, 0.07);
 }
 
 .workspace-topbar__actions {
@@ -336,14 +336,14 @@ body.drawer-open {
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     background:
-        radial-gradient(ellipse 55% 120% at 90% 10%, rgba(6, 182, 212, 0.2), transparent 65%),
+        radial-gradient(ellipse 55% 120% at 90% 10%, rgba(154, 165, 173, 0.2), transparent 65%),
         linear-gradient(120deg, #0d1d33, #081323);
     box-shadow: var(--shadow-sm);
 }
 
 .workspace-hero--admin {
     background:
-        radial-gradient(ellipse 55% 120% at 90% 10%, rgba(245, 158, 11, 0.16), transparent 65%),
+        radial-gradient(ellipse 55% 120% at 90% 10%, rgba(201, 162, 39, 0.16), transparent 65%),
         linear-gradient(120deg, #171d2c, #081323);
 }
 
@@ -379,7 +379,7 @@ body.drawer-open {
     position: absolute;
     top: 50%;
     right: 18px;
-    color: rgba(148, 190, 214, 0.055);
+    color: rgba(170, 178, 185, 0.055);
     font-family: var(--font-display);
     font-size: clamp(6rem, 12vw, 9rem);
     font-weight: 700;
@@ -411,9 +411,9 @@ body.drawer-open {
     place-items: center;
     width: 37px;
     height: 37px;
-    border: 1px solid rgba(6, 182, 212, 0.2);
+    border: 1px solid rgba(154, 165, 173, 0.2);
     border-radius: 9px;
-    background: rgba(6, 182, 212, 0.07);
+    background: rgba(154, 165, 173, 0.07);
     color: var(--cyan-soft);
 }
 
@@ -429,8 +429,8 @@ body.drawer-open {
 }
 
 .stat-card__icon--gold {
-    border-color: rgba(245, 158, 11, 0.24);
-    background: rgba(245, 158, 11, 0.075);
+    border-color: rgba(201, 162, 39, 0.24);
+    background: rgba(201, 162, 39, 0.075);
     color: var(--gold-soft);
 }
 
@@ -519,7 +519,7 @@ body.drawer-open {
 .data-table th {
     padding: 11px 13px;
     border-bottom: 1px solid var(--line);
-    background: rgba(148, 190, 214, 0.045);
+    background: rgba(170, 178, 185, 0.045);
     color: var(--muted);
     font-family: var(--font-display);
     font-size: 0.56rem;
@@ -546,7 +546,7 @@ body.drawer-open {
 }
 
 .data-table tbody tr:hover {
-    background: rgba(6, 182, 212, 0.035);
+    background: rgba(154, 165, 173, 0.035);
 }
 
 .data-table small {
@@ -602,7 +602,7 @@ body.drawer-open {
     flex: none;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--cyan-soft), var(--cyan));
-    color: #04121b;
+    color: #0A0D10;
     font-family: var(--font-display);
     font-size: 0.66rem;
     font-weight: 700;
@@ -628,7 +628,7 @@ body.drawer-open {
     flex: none;
     border: 1px solid var(--line);
     border-radius: 7px;
-    background: rgba(6, 182, 212, 0.06);
+    background: rgba(154, 165, 173, 0.06);
 }
 
 .table-package__emblem img {
@@ -711,7 +711,7 @@ body.drawer-open {
     height: 5px;
     overflow: hidden;
     border-radius: 999px;
-    background: rgba(148, 190, 214, 0.08);
+    background: rgba(170, 178, 185, 0.08);
 }
 
 .status-breakdown__fill {
@@ -760,7 +760,7 @@ body.drawer-open {
     height: 35px;
     flex: none;
     border-radius: 7px;
-    background: rgba(6, 182, 212, 0.06);
+    background: rgba(154, 165, 173, 0.06);
 }
 
 .top-package-list__emblem img {
@@ -825,15 +825,15 @@ body.drawer-open {
     width: 39px;
     height: 39px;
     flex: none;
-    border: 1px solid rgba(6, 182, 212, 0.2);
+    border: 1px solid rgba(154, 165, 173, 0.2);
     border-radius: 9px;
-    background: rgba(6, 182, 212, 0.07);
+    background: rgba(154, 165, 173, 0.07);
     color: var(--cyan-soft);
 }
 
 .info-card__icon--gold {
-    border-color: rgba(245, 158, 11, 0.24);
-    background: rgba(245, 158, 11, 0.07);
+    border-color: rgba(201, 162, 39, 0.24);
+    background: rgba(201, 162, 39, 0.07);
     color: var(--gold-soft);
 }
 
@@ -897,7 +897,7 @@ body.drawer-open {
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     background:
-        radial-gradient(ellipse 50% 130% at 100% 0%, rgba(6, 182, 212, 0.12), transparent 65%),
+        radial-gradient(ellipse 50% 130% at 100% 0%, rgba(154, 165, 173, 0.12), transparent 65%),
         linear-gradient(135deg, rgba(15, 29, 48, 0.9), rgba(7, 16, 29, 0.9));
 }
 
@@ -923,7 +923,7 @@ body.drawer-open {
     flex: none;
     border: 1px solid var(--line);
     border-radius: 11px;
-    background: radial-gradient(circle at 50% 35%, rgba(6, 182, 212, 0.16), rgba(4, 12, 22, 0.4) 72%);
+    background: radial-gradient(circle at 50% 35%, rgba(154, 165, 173, 0.16), rgba(4, 12, 22, 0.4) 72%);
 }
 
 .order-overview__emblem img {
@@ -1026,8 +1026,8 @@ body.drawer-open {
 }
 
 .detail-panel--gold {
-    border-color: rgba(245, 158, 11, 0.24);
-    background: rgba(245, 158, 11, 0.045);
+    border-color: rgba(201, 162, 39, 0.24);
+    background: rgba(201, 162, 39, 0.045);
 }
 
 .detail-list {
@@ -1110,8 +1110,8 @@ body.drawer-open {
     border-color: var(--cyan);
     background: var(--cyan);
     box-shadow:
-        0 0 0 4px rgba(6, 182, 212, 0.14),
-        0 0 14px rgba(6, 182, 212, 0.55);
+        0 0 0 4px rgba(154, 165, 173, 0.14),
+        0 0 14px rgba(154, 165, 173, 0.55);
 }
 
 .timeline__head {
@@ -1154,7 +1154,7 @@ body.drawer-open {
 }
 
 .summary-card--admin {
-    border-color: rgba(6, 182, 212, 0.26);
+    border-color: rgba(154, 165, 173, 0.26);
 }
 
 .summary-card h2 {
@@ -1172,9 +1172,9 @@ body.drawer-open {
     align-items: flex-start;
     gap: 9px;
     padding: 12px 13px;
-    border: 1px solid rgba(245, 158, 11, 0.2);
+    border: 1px solid rgba(201, 162, 39, 0.2);
     border-radius: 9px;
-    background: rgba(245, 158, 11, 0.045);
+    background: rgba(201, 162, 39, 0.045);
     color: var(--muted);
     font-size: 0.67rem;
     line-height: 1.6;
@@ -1208,7 +1208,7 @@ body.drawer-open {
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     background:
-        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(6, 182, 212, 0.1), transparent 70%),
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(154, 165, 173, 0.1), transparent 70%),
         linear-gradient(160deg, rgba(17, 31, 51, 0.82), rgba(7, 16, 29, 0.92));
     text-align: center;
 }
@@ -1219,14 +1219,14 @@ body.drawer-open {
     width: 72px;
     height: 72px;
     margin: 0 auto 13px;
-    border: 1px solid rgba(165, 243, 252, 0.35);
+    border: 1px solid rgba(227, 232, 236, 0.35);
     border-radius: 50%;
     background: linear-gradient(135deg, var(--cyan-soft), var(--cyan));
-    color: #04121b;
+    color: #0A0D10;
     font-family: var(--font-display);
     font-size: 1.55rem;
     font-weight: 700;
-    box-shadow: 0 14px 34px -16px rgba(6, 182, 212, 0.8);
+    box-shadow: 0 14px 34px -16px rgba(154, 165, 173, 0.8);
 }
 
 .profile-card h2 {
@@ -1317,7 +1317,7 @@ body.drawer-open {
 .rank-preview code {
     padding: 1px 4px;
     border-radius: 3px;
-    background: rgba(148, 190, 214, 0.08);
+    background: rgba(170, 178, 185, 0.08);
     color: var(--cyan-soft);
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.64rem;

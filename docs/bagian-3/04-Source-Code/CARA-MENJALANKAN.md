@@ -37,25 +37,17 @@ php artisan serve --host=127.0.0.1 --port=8000
 
 Buka `http://127.0.0.1:8000` di browser.
 
-## Akun demo
+## Akun admin
 
-| Peran | Email | Password |
-| --- | --- | --- |
-| Pelanggan | `demo@dsstore.id` | `password` |
-| Admin | `admin@dsstore.id` | `password` |
-
-Data contoh:
-- Pesanan `DS-DEMO-001` (status: sedang dikerjakan, lunas).
-- Pesanan `DS-DEMO-002` (status: selesai, lunas).
-- WhatsApp demo untuk pelacakan: `081200000000`.
-
-## Reset data demo
-
-Jika akun demo gagal login atau data berubah saat pengujian:
+Tidak disediakan akun demo. Buat akun admin sendiri setelah database siap:
 
 ```powershell
-php artisan db:seed --class=DemoDataSeeder --force
+php artisan admin:create a3snewbaru990@gmail.com --name="Admin DS Store"
 ```
+
+Perintah meminta password secara interaktif. Untuk kebutuhan otomatis bisa memakai opsi `--password=...`.
+
+Pelanggan mendaftar sendiri lewat halaman `/register`.
 
 Jika ingin mengulang dari nol:
 
@@ -75,7 +67,7 @@ app/Http/Middleware/         EnsureUserIsAdmin
 app/Models/                  User, ServicePackage, Order, OrderEvent, HeroSlide
 config/site.php              Nama brand, WhatsApp, Instagram, FAQ
 database/migrations/         Skema tabel
-database/seeders/            Data awal & akun demo
+database/seeders/            Data awal paket & slide promosi
 resources/views/             Blade layout, component, halaman
 resources/css/               base, home, workspace, responsive
 resources/js/app.js          Carousel, kalkulator, drawer, toggle password
@@ -91,7 +83,7 @@ tests/Feature/               18 pengujian otomatis
 vendor/bin/phpunit
 ```
 
-Hasil terakhir: **18 tests passed, 58 assertions**.
+Hasil terakhir: **18 tests passed, 57 assertions**.
 
 ## Troubleshooting singkat
 
@@ -99,7 +91,7 @@ Hasil terakhir: **18 tests passed, 58 assertions**.
 | --- | --- |
 | `could not find driver` SQLite | Aktifkan ekstensi `pdo_sqlite` di `php.ini` |
 | Halaman putih / CSS belum ada | Jalankan `npm run build`, lalu `php artisan view:clear` |
-| Demo login gagal | Jalankan `php artisan db:seed --class=DemoDataSeeder --force` |
+| Admin tidak bisa login | Buat ulang dengan `php artisan admin:create a3snewbaru990@gmail.com` |
 | Error 500 setelah ganti rute | Jalankan `php artisan route:clear` dan `php artisan config:clear` |
 | Port 8000 dipakai | Gunakan port lain: `php artisan serve --port=8001` |
 

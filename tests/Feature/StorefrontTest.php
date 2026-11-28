@@ -5,10 +5,10 @@ namespace Tests\Feature;
 use App\Models\Order;
 use App\Models\ServicePackage;
 use App\Models\User;
-use Database\Seeders\DemoDataSeeder;
 use Database\Seeders\HeroSlideSeeder;
 use Database\Seeders\ServicePackageSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class StorefrontTest extends TestCase
@@ -156,26 +156,26 @@ class StorefrontTest extends TestCase
         ])->assertSessionHasErrors('order_code');
     }
 
-    public function test_documented_demo_accounts_can_log_in_and_log_out(): void
+    public function test_admin_can_be_created_with_the_artisan_command(): void
     {
-        $this->seed([ServicePackageSeeder::class, DemoDataSeeder::class]);
+        $this->artisan('admin:create', [
+            'email' => 'admin@example.test',
+            '--name' => 'Admin Utama',
+            '--password' => 'rahasia123',
+        ])->assertSuccessful();
+
+        $admin = User::where('email', 'admin@example.test')->firstOrFail();
+
+        $this->assertTrue($admin->isAdmin());
+        $this->assertTrue(Hash::check('rahasia123', $admin->password));
 
         $this->post(route('login.store'), [
-            'email' => 'demo@dsstore.id',
-            'password' => 'password',
-        ])->assertRedirect(route('dashboard'));
-
-        $this->assertAuthenticated();
+            'email' => 'admin@example.test',
+            'password' => 'rahasia123',
+        ])->assertRedirect(route('admin.dashboard'));
 
         $this->post(route('logout'))->assertRedirect(route('home'));
         $this->assertGuest();
-
-        $this->post(route('login.store'), [
-            'email' => 'admin@dsstore.id',
-            'password' => 'password',
-        ])->assertRedirect(route('admin.dashboard'));
-
-        $this->assertAuthenticated();
     }
 
     public function test_admin_login_redirects_to_admin_dashboard(): void

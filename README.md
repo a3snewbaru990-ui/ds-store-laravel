@@ -30,20 +30,17 @@ php artisan serve --host=127.0.0.1 --port=8000
 
 Buka `http://127.0.0.1:8000`.
 
-### Akun demo
+### Akun admin
 
-| Peran | Email | Password |
-| --- | --- | --- |
-| Pelanggan | `demo@dsstore.id` | `password` |
-| Admin | `admin@dsstore.id` | `password` |
-
-Kode pesanan demo: `DS-DEMO-001`, `DS-DEMO-002`. WhatsApp demo untuk lacak: `081200000000`.
-
-Jika password demo tidak cocok setelah data diubah:
+Tidak ada akun demo. Buat akun admin milik sendiri dengan perintah:
 
 ```powershell
-php artisan db:seed --class=DemoDataSeeder --force
+php artisan admin:create a3snewbaru990@gmail.com --name="Admin DS Store"
 ```
+
+Perintah akan meminta password secara interaktif (opsi `--password=` juga tersedia untuk kebutuhan otomatis). Akun admin tersebut dipakai untuk login di `/login` dan mengakses `/admin`.
+
+Pelanggan mendaftar sendiri melalui halaman `/register`.
 
 ## Pengujian
 
@@ -51,7 +48,7 @@ php artisan db:seed --class=DemoDataSeeder --force
 vendor/bin/phpunit
 ```
 
-Hasil terakhir: **18 test lulus, 58 assertion**.
+Hasil terakhir: **18 test lulus, 57 assertion**.
 
 ## Dokumentasi pengumpulan (Bagian 3)
 

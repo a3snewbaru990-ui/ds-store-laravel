@@ -31,12 +31,10 @@
 | `[Nama Anggota 3]` | Admin & Testing | Dashboard admin, validasi, pengujian, QA |
 | `[Nama Anggota 4]` | Dokumentasi | Laporan, slide, screenshot, video |
 
-## Credential demo (sudah aktif di database)
+## Akun admin (milik sendiri)
 
-| Peran | Email | Password |
+| Peran | Email | Keterangan |
 | --- | --- | --- |
-| Pelanggan | `demo@dsstore.id` | `password` |
-| Admin | `admin@dsstore.id` | `password` |
+| Admin | `a3snewbaru990@gmail.com` | Dibuat dengan `php artisan admin:create`; password disimpan oleh pemilik akun |
 
-Kode pesanan contoh: `DS-DEMO-001`, `DS-DEMO-002`.
-Nomor WhatsApp demo untuk pelacakan: `081200000000`.
+Tidak ada akun demo di database. Pelanggan mendaftar mandiri lewat `/register`.

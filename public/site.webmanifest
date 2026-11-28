@@ -4,8 +4,8 @@
   "description": "Respon Cepat, Progres Kilat & 100% Amanah. Jasa joki akun Mobile Legends Season 42.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#06b6d4",
+  "background_color": "#14181C",
+  "theme_color": "#9AA5AD",
   "icons": [
     {
       "src": "/favicon.png",

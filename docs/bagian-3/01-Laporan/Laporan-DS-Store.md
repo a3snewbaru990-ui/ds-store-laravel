@@ -38,7 +38,7 @@ Puji syukur kami panjatkan atas selesainya penyusunan laporan project ini. Lapor
 
 Website dibangun menggunakan Laravel 12 dengan pendekatan Model–View–Controller, SQLite sebagai penyimpanan data, serta Vite untuk mengelola aset CSS dan JavaScript. Aplikasi menyediakan halaman promosi dengan carousel hero, pricelist interaktif, form pemesanan, pelacakan pesanan, dashboard pelanggan, dan dashboard admin.
 
-Laporan ini juga menjadi catatan perbaikan kualitas selama proses quality assurance, termasuk perbaikan alur login/logout demo, navigasi anchor, tampilan drawer mobile, stabilitas carousel, dan penghapusan background pada emblem rank.
+Laporan ini juga menjadi catatan perbaikan kualitas selama proses quality assurance, termasuk perbaikan alur login/logout admin, navigasi anchor, tampilan drawer mobile, stabilitas carousel, dan penghapusan background pada emblem rank.
 
 Kami mengucapkan terima kasih kepada dosen pengampu, rekan kelompok, dan semua pihak yang telah memberi masukan sehingga project ini dapat diselesaikan.
 
@@ -164,7 +164,7 @@ Laravel adalah framework PHP berbasis Model–View–Controller (Controller). Mo
 
 ### 2.2 Eloquent, Migration, dan Seeder
 
-Eloquent ORM memetakan tabel database ke kelas Model sehingga operasi data dapat ditulis dalam PHP. Migration berfungsi sebagai versi skema database yang dapat dijalankan berulang kali, sedangkan Seeder mengisi data awal seperti paket joki, slide promosi, akun demo, dan pesanan contoh.
+Eloquent ORM memetakan tabel database ke kelas Model sehingga operasi data dapat ditulis dalam PHP. Migration berfungsi sebagai versi skema database yang dapat dijalankan berulang kali, sedangkan Seeder mengisi data awal seperti paket joki, slide promosi dan paket joki. Akun admin dibuat terpisah melalui perintah Artisan.
 
 ### 2.3 Blade, Component, dan Vite
 
@@ -264,14 +264,23 @@ Aplikasi terdaftar 26 rute. Rute utama dirangkum berikut:
 
 ### 3.5 Desain Antarmuka
 
-Identitas visual memakai palet dark slate #0F172A, cyan #06B6D4, dan gold #F59E0B. Tipografi memakai Bai Jamjuree untuk judul dan Manrope untuk teks tubuh. Tata letak menggunakan frame angular, kartu dengan border halus, dan efek glow tipis agar kesan esports/portal command center terasa kuat tanpa berlebihan.
+Model antarmuka yang dipakai adalah “The Forge”: permukaan charcoal metal, aksen silver yang dipoles, dan emas antik yang diambil langsung dari logo DS Store. Token warna didefinisikan dalam OKLCH agar kestabilan hue dan kontras dapat diperhitungkan, dengan fallback hex untuk kompatibilitas. Tipografi memakai Bai Jamjuree untuk judul dan Manrope untuk teks tubuh. Label kecil uppercase dan garis emas memberi kesan lencana/guild premium, bukan lagi kesan command center biru.
+
+| Peran warna | Nilai OKLCH | Hex fallback | Penggunaan |
+| --- | --- | --- | --- |
+| Accent / emas | oklch(0.728 0.138 89.7) | #C9A227 | Tombol utama, border aktif, price tag |
+| Accent bright | oklch(0.843 0.119 91.5) | #E8C96B | Hover, kicker, ikon penting |
+| Steel | oklch(0.716 0.017 239.2) | #9AA5AD | Teks sekunder, edge field |
+| Charcoal | oklch(0.207 0.010 248.3) | #14181C | Latar halaman & panel |
+
+Audit kontras menunjukkan teks tubuh 16,18:1, teks sekunder 11,68:1, teks muted 7,10:1, dan label tombol emas 7,52:1—seluruhnya di atas ambang WCAG AA 4,5:1.
 
 | Elemen | Keputusan Desain |
 | --- | --- |
-| Hero | Banner lebar 16:9 pada desktop, tumpuk pada layar ≤ 860 px |
-| Pricelist | Kartu rank 2 kolom + panel estimator di samping |
-| Dashboard | Sidebar gelap, kartu metrik, tabel pesanan, timeline status |
-| Mobile | Navigasi drawer, kartu satu kolom, tombol WhatsApp mengambang |
+| Hero | Banner lebar 16:9, scrim enam stop, headline putih, kicker emas |
+| Pricelist | Kartu pelat silver dengan border emas saat dipilih + panel estimator |
+| Dashboard | Sidebar charcoal, penanda aktif emas, panel metal |
+| Mobile | Navigasi drawer charcoal dengan aksi utama emas |
 
 ## BAB IV  IMPLEMENTASI
 
@@ -338,7 +347,7 @@ Gambar 4.2 Form pemesanan dengan ringkasan total
 
 Login berhasil mengarahkan admin ke /admin dan pelanggan ke /dashboard. Tombol keluar tersedia di header publik saat pengguna sudah login, pada sidebar workspace, dan pada drawer mobile. Seluruh form logout memakai method POST dan token CSRF.
 
-Gambar 4.3 Halaman login dengan akun demo untuk penguji
+Gambar 4.3 Halaman login DS Store
 
 Gambar 4.4 Dashboard pelanggan
 
@@ -360,7 +369,7 @@ Gambar 4.7 Detail pesanan dan pembaruan status pada area admin
 | Controller | HomeController, OrderController, DashboardController, Admin\*Controller, Auth\*Controller |
 | Model & Eloquent | User, ServicePackage, Order, OrderEvent, HeroSlide dengan relasi dan accessor |
 | Migration | Skema users tambahan, hero_slides, service_packages, orders, order_events |
-| Seeder | HeroSlideSeeder, ServicePackageSeeder, DemoDataSeeder |
+| Seeder | HeroSlideSeeder, ServicePackageSeeder |
 | Blade & Component | Layout app/workspace/auth, partial home, komponen icon/flash/input-error |
 | Middleware | auth, guest, admin (EnsureUserIsAdmin), throttle |
 | Form Request | StoreOrderRequest dengan aturan dan pesan error Bahasa Indonesia |
@@ -376,7 +385,7 @@ Selama quality assurance ditemukan dan diperbaiki beberapa masalah. Perbaikan in
 
 | Masalah | Akar Masalah | Perbaikan |
 | --- | --- | --- |
-| Akun demo pelanggan gagal login | Hash password pada database demo tidak lagi cocok dengan 'password' | DemoDataSeeder dijalankan ulang dan ditambah test otomatis demo login/logout |
+| Akun demo tidak sesuai kebutuhan | Akun demo bersifat umum dan tidak mewakili pemilik toko | Akun demo dihapus; admin dibuat dengan perintah admin:create menggunakan email pemilik |
 | Tombol login/logout sulit ditemukan | Logout hanya ada di sidebar workspace; header publik tidak punya aksi keluar | Ditambah tombol Keluar di header publik dan di drawer mobile |
 | Judul bagian tertutup header saat klik menu anchor | Sticky header tidak memiliki scroll offset | html.scroll-padding-top = var(--header-offset) pada 128px desktop / 112px mobile |
 | Header seolah 'glitch' saat scroll | Announcement bar menyusut dan menggeser konten secara tiba-tiba | Tinggi header dibuat konstan; hanya warna dan bayangan yang berubah |
@@ -402,7 +411,7 @@ Pengujian dilakukan pada tiga lapis: (1) unit/feature test Laravel dengan SQLite
 | 3 | Tombol jeda menahan slide; setelah dilepas dan kursor keluar, autoplay lanjut | Lulus |
 | 4 | Klik menu Pricelist mengarah ke #pricelist dengan judul tidak tertutup header | Lulus |
 | 5 | Drawer mobile terbuka, tautan menutup drawer setelah diklik | Lulus |
-| 6 | Login pelanggan demo menuju /dashboard | Lulus |
+| 6 | Login admin menuju /dashboard dan /admin | Lulus |
 | 7 | Login admin menuju /admin | Lulus |
 | 8 | Logout dari header publik, sidebar workspace, dan drawer mobile | Lulus |
 | 9 | Kalkulator pricelist mengubah total sesuai rank dan bintang | Lulus |
@@ -420,7 +429,7 @@ Pengujian dilakukan pada tiga lapis: (1) unit/feature test Laravel dengan SQLite
 
 Perintah: vendor/bin/phpunit
 
-Tests:    18 passed (58 assertions)
+Tests:    18 passed (57 assertions)
 
 Duration: ~20s
 
@@ -432,7 +441,7 @@ PASS  Tests\Feature\ExampleTest          (1 test)
 
 PASS  Tests\Feature\StorefrontTest       (11 tests)
 
-Pengujian otomatis mencakup halaman beranda, validasi order, perhitungan total server-side, perlindungan order antarpelanggan, autentikasi demo, login admin, registrasi, otorisasi admin, pembaruan status, pembuatan paket, dan perlindungan penghapusan paket.
+Pengujian otomatis mencakup halaman beranda, validasi order, perhitungan total server-side, perlindungan order antarpelanggan, autentikasi admin, registrasi, otorisasi admin, pembaruan status, pembuatan paket, dan perlindungan penghapusan paket.
 
 ### 5.4 Pengujian Responsif dan Browser
 
@@ -455,7 +464,7 @@ Gambar 5.2 Navigasi drawer mobile
 
 Website DS Store berhasil dibangun dengan Laravel 12 dan memenuhi kebutuhan utama: menampilkan promo Season 42, menyediakan pricelist resmi, mengelola pesanan, memberikan dashboard pelanggan dan admin, serta memungkinkan pelacakan tanpa login. Fitur Laravel digunakan secara konsisten mulai dari routing, MVC, Eloquent, migration, seeder, Blade, middleware, validasi, autentikasi, otorisasi, hingga pengujian otomatis.
 
-Proses QA menemukan beberapa masalah nyata—akun demo gagal login, tombol logout tersembunyi, anchor tertutup header, dropdown mobile tembus pandang, dan carousel tidak melanjutkan setelah jeda. Seluruh masalah telah diperbaiki dan diverifikasi ulang dengan pengujian otomatis maupun browser.
+Proses QA menemukan beberapa masalah nyata—tombol logout tersembunyi, anchor tertutup header, dropdown mobile tembus pandang, dan carousel tidak melanjutkan setelah jeda. Seluruh masalah telah diperbaiki dan diverifikasi ulang dengan pengujian otomatis maupun browser.
 
 ### 6.2 Saran
 
@@ -483,14 +492,14 @@ Poizy Store. (2026). Referensi konsep layanan joki Mobile Legends. https://www.p
 
 Mobile Legends: Bang Bang. (2026). Informasi rank dan musim kompetitif.
 
-## LAMPIRAN A  KREDENSIAL DEMO
+## LAMPIRAN A  AKUN ADMIN
 
-| Peran | Email | Password | Tujuan |
+| Peran | Email | Cara membuat | Tujuan |
 | --- | --- | --- | --- |
-| Pelanggan | demo@dsstore.id | password | Melihat dashboard dan pesanan demo |
-| Admin | admin@dsstore.id | password | Mengelola pesanan dan paket |
+| Admin | a3snewbaru990@gmail.com | php artisan admin:create | Mengelola pesanan dan paket |
+| Pelanggan | Dibuat mandiri | Halaman /register | Membuat dan memantau pesanan |
 
-Kode pesanan demo: DS-DEMO-001 dan DS-DEMO-002. Nomor WhatsApp demo yang dipakai saat order: 081200000000.
+Tidak ada akun demo. Password admin dibuat interaktif melalui perintah Artisan dan tidak disimpan di dalam repository.
 
 ## LAMPIRAN B  STRUKTUR PENGUMPULAN
 
@@ -517,7 +526,7 @@ DATA-KELOMPOK.md
 | 01-home-desktop.png | Beranda desktop: hero + pricelist |
 | 02-home-mobile.png | Beranda mobile |
 | 03-mobile-nav.png | Drawer navigasi mobile |
-| 04-login.png | Halaman login dengan akun demo |
+| 04-login.png | Halaman login DS Store (model The Forge) |
 | 05-order-form.png | Form order dan ringkasan total |
 | 06-tracking-result.png | Hasil pelacakan pesanan |
 | 07-customer-dashboard.png | Dashboard pelanggan |

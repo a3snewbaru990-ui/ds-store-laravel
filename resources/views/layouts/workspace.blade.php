@@ -12,7 +12,7 @@
     <title>@yield('title', 'Dashboard | DS Store')</title>
     <meta name="description" content="@yield('description', 'Dashboard DS Store.')">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#14181C">
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="preload" href="{{ asset('fonts/bai-jamjuree-700.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ asset('fonts/manrope-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
