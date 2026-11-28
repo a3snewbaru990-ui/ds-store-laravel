@@ -64,7 +64,7 @@ Gunakan slide PPTX yang sesuai, lalu lanjut ke demo browser pada menit yang dite
 ## 05:15 — Pengujian & QA (Slide 12–13)
 
 **Narator 1:**
-"Kami menjalankan `vendor/bin/phpunit` dengan hasil **18 test lulus dan 57 assertion**. Pengujian mencakup beranda, validasi order, total server-side, otorisasi, login logout, registrasi, pelacakan, dan pengelolaan paket. Selama quality assurance kami juga menemukan dan memperbaiki beberapa masalah nyata: tombol logout yang tersembunyi, judul bagian yang tertutup header saat klik menu, menu mobile yang tembus pandang, carousel yang tidak lanjut setelah tombol jeda, emblem rank yang masih memiliki background putih, dan akun demo yang akhirnya kami hapus. Semua sudah diverifikasi ulang dengan 0 error konsol."
+"Kami menjalankan `vendor/bin/phpunit` dengan hasil **18 test lulus dan 57 assertion**. Pengujian mencakup beranda, validasi order, total server-side, otorisasi, login logout, registrasi, pelacakan, dan pengelolaan paket. Selama quality assurance kami juga menemukan dan memperbaiki beberapa masalah nyata: tombol logout yang tersembunyi, judul bagian yang tertutup header saat klik menu, menu mobile yang tembus pandang, tombol jeda pada carousel yang akhirnya kami hapus, emblem rank yang masih memiliki background putih, dan akun demo yang akhirnya kami hapus. Semua sudah diverifikasi ulang dengan 0 error konsol."
 
 ---
 

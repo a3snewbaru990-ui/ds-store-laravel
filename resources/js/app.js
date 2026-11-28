@@ -104,7 +104,6 @@ const initHeroCarousel = (root) => {
     const dots = $$('[data-hero-dot]', root);
     const prevButton = $('[data-hero-prev]', root);
     const nextButton = $('[data-hero-next]', root);
-    const pauseButton = $('[data-hero-pause]', root);
     const progressBar = $('[data-hero-progress]', root);
     const counter = $('[data-hero-current]', root);
     const duration = Math.max(3000, Number(root.dataset.autoplay) || 5200);
@@ -114,12 +113,10 @@ const initHeroCarousel = (root) => {
     let lastFrame = 0;
     let animationFrame = 0;
     let hovered = false;
-    let userPaused = false;
     let started = false;
 
     const canAutoplay = () =>
         slides.length > 1 &&
-        !userPaused &&
         !hovered &&
         !document.hidden &&
         !reduceMotion.matches;
@@ -212,24 +209,6 @@ const initHeroCarousel = (root) => {
     show(index, 1);
     started = true;
     start();
-
-    if (pauseButton) {
-        pauseButton.addEventListener('click', () => {
-            userPaused = !userPaused;
-            pauseButton.setAttribute('aria-pressed', String(userPaused));
-            pauseButton.setAttribute(
-                'aria-label',
-                userPaused ? 'Lanjutkan tayangan otomatis' : 'Jeda tayangan otomatis'
-            );
-            root.classList.toggle('is-paused', userPaused);
-
-            if (userPaused) {
-                stop();
-            } else {
-                start();
-            }
-        });
-    }
 
     prevButton?.addEventListener('click', () => go(-1));
     nextButton?.addEventListener('click', () => go(1));
@@ -693,7 +672,9 @@ if (chatbot) {
     const input = $('#chatbot-input', chatbot);
     const whatsappUrl = chatbot.dataset.whatsapp || '#';
 
-    const appendMessage = (text, sender = 'bot') => {
+    let replyCount = 0;
+
+    const appendMessage = (text, sender = 'bot', suggestion = null) => {
         if (!messages) {
             return;
         }
@@ -702,6 +683,16 @@ if (chatbot) {
         bubble.className = `chatbot-message chatbot-message--${sender}`;
         bubble.textContent = text;
         messages.appendChild(bubble);
+
+        if (suggestion) {
+            const link = document.createElement('a');
+            link.className = 'chatbot-suggestion';
+            link.href = suggestion.href;
+            link.textContent = suggestion.label;
+            bubble.appendChild(document.createElement('br'));
+            bubble.appendChild(link);
+        }
+
         messages.scrollTop = messages.scrollHeight;
     };
 
@@ -722,28 +713,54 @@ if (chatbot) {
 
     const replyFor = (question) => {
         const text = question.toLowerCase();
+        replyCount += 1;
 
-        if (/harga|price|biaya|rp|bintang|rp\.?/.test(text)) {
-            return priceAnswer();
+        const opener = [
+            '',
+            'Cek dulu ya, ',
+            'Bisa, ',
+            'Oke, ',
+        ][replyCount % 4];
+
+        if (/harga|price|biaya|rp|bintang/.test(text)) {
+            return {
+                text: `${opener}ini tarif yang berlaku sekarang:\n${priceAnswer()}`,
+                suggestion: { label: 'Lihat pricelist lengkap', href: '/#pricelist' },
+            };
         }
 
         if (/cara|order|pesan|beli|daftar/.test(text)) {
-            return 'Pilih paket di pricelist, tentukan jumlah bintang, lalu isi data akun di form order. Pembayaran dikonfirmasi admin lewat WhatsApp.';
+            return {
+                text: `${opener}Pilih paket, tentukan bintang, lalu isi data akun. Pembayaran dikonfirmasi admin lewat WhatsApp.`,
+                suggestion: { label: 'Baca langkah order', href: '/#cara-order' },
+            };
         }
 
         if (/lacak|status|progres|resi|kode/.test(text)) {
-            return 'Buka halaman Lacak pesanan, lalu masukkan kode order dan nomor WhatsApp yang dipakai saat order.';
+            return {
+                text: `${opener}masukkan kode order dan WhatsApp yang dipakai saat order di halaman lacak.`,
+                suggestion: { label: 'Buka pelacakan', href: '/lacak' },
+            };
         }
 
         if (/admin|whatsapp|wa|hubungi|manusia/.test(text)) {
-            return `Untuk jawaban langsung, chat admin di WhatsApp: ${whatsappUrl}`;
+            return {
+                text: `${opener}kalau mau jawaban langsung dari orangnya, lanjut ke WhatsApp ya.`,
+                suggestion: { label: 'Chat admin sekarang', href: whatsappUrl },
+            };
         }
 
         if (/aman|password|akun/.test(text)) {
-            return 'Password akun game tidak disimpan di website. Detail akun hanya dibahas dengan admin lewat WhatsApp setelah pesanan dikonfirmasi.';
+            return {
+                text: `${opener}password akun game tidak disimpan di website. Detail akun dibahas langsung dengan admin lewat WhatsApp.`,
+                suggestion: null,
+            };
         }
 
-        return 'Aku bisa bantu soal harga, cara order, pelacakan, dan keamanan akun. Kalau butuh jawaban langsung, silakan chat admin lewat WhatsApp.';
+        return {
+            text: `${opener}aku bisa bantu soal harga, cara order, lacak pesanan, atau keamanan akun. Pilih salah satu ya.`,
+            suggestion: null,
+        };
     };
 
     const setOpen = (open) => {
@@ -781,14 +798,15 @@ if (chatbot) {
         button.addEventListener('click', () => {
             const question = button.dataset.chatbotAsk || '';
             const labels = {
-                harga: 'Berapa harga joki?',
-                cara: 'Cara order gimana?',
-                lacak: 'Lacak pesanan',
-                admin: 'Chat admin',
+                harga: 'Harga berapa?',
+                cara: 'Order gimana?',
+                lacak: 'Lacak order',
+                admin: 'Ingin chat admin',
             };
 
             appendMessage(labels[question] || question, 'user');
-            appendMessage(replyFor(question));
+            const reply = replyFor(question);
+            appendMessage(reply.text, 'bot', reply.suggestion);
         });
     });
 
@@ -801,7 +819,8 @@ if (chatbot) {
         }
 
         appendMessage(value, 'user');
-        appendMessage(replyFor(value));
+        const reply = replyFor(value);
+        appendMessage(reply.text, 'bot', reply.suggestion);
 
         if (input) {
             input.value = '';

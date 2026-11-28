@@ -592,7 +592,7 @@ php artisan serve --host=127.0.0.1 --port=8000
         doc,
         """
 const canAutoplay = () =>
-    slides.length > 1 && !userPaused && !hovered &&
+    slides.length > 1 && !hovered &&
     !document.hidden && !reduceMotion.matches;
 """,
     )
@@ -701,9 +701,9 @@ $totalPrice = $package->isStarPackage()
                 "Background dropdown dibuat solid #060E19",
             ],
             [
-                "Carousel tidak lanjut setelah tombol jeda ditekan",
-                "Fokus tombol mengaktifkan state pause tambahan",
-                "State fokus dihapus dari syarat autoplay; hover dan tombol jeda tetap berfungsi",
+                "Tombol jeda pada carousel terasa berlebih",
+                "Kontrol pause mengganggu visual hero",
+                "Tombol jeda dihapus; autoplay tetap berhenti saat hover dan lanjut saat kursor keluar",
             ],
             [
                 "Emblem rank memiliki kotak putih",
@@ -743,7 +743,7 @@ def chapter5(doc: Document) -> None:
         [
             ["1", "Autoplay carousel berpindah slide setelah ±5,2 detik", "Lulus"],
             ["2", "Tombol prev/next dan dot mengganti slide aktif", "Lulus"],
-            ["3", "Tombol jeda menahan slide; setelah dilepas dan kursor keluar, autoplay lanjut", "Lulus"],
+            ["3", "Autoplay berhenti saat kursor di atas carousel dan lanjut saat kursor keluar", "Lulus"],
             ["4", "Klik menu Pricelist mengarah ke #pricelist dengan judul tidak tertutup header", "Lulus"],
             ["5", "Drawer mobile terbuka, tautan menutup drawer setelah diklik", "Lulus"],
             ["6", "Login admin menuju /dashboard dan /admin", "Lulus"],
@@ -817,7 +817,7 @@ def chapter6(doc: Document) -> None:
     doc.add_paragraph(
         "Proses QA menemukan beberapa masalah nyata—tombol logout tersembunyi, "
         "anchor tertutup header, dropdown mobile tembus pandang, dan carousel tidak melanjutkan "
-        "setelah jeda. Seluruh masalah telah diperbaiki dan diverifikasi ulang dengan pengujian "
+        "pada hero. Seluruh masalah telah diperbaiki dan diverifikasi ulang dengan pengujian "
         "otomatis maupun browser."
     )
 

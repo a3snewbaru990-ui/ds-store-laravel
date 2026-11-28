@@ -262,6 +262,10 @@ body::before {
    Chatbot
    -------------------------------------------------------------------------- */
 
+.wa-float {
+    display: none;
+}
+
 .site-chatbot {
     position: fixed;
     right: clamp(16px, 3vw, 32px);
@@ -322,11 +326,21 @@ body::before {
 }
 
 .chatbot-panel__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
     margin: 0;
     color: var(--atelier-gold-soft);
     font-family: var(--font-display);
     font-size: 1rem;
     font-weight: 600;
+}
+
+.chatbot-panel__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--atelier-gold);
 }
 
 .chatbot-panel__sub {
@@ -376,6 +390,27 @@ body::before {
     color: var(--atelier-steel-soft);
 }
 
+.chatbot-message--bot:nth-of-type(3n + 2) {
+    border-radius: 4px 14px 14px 14px;
+}
+
+.chatbot-message--bot:nth-of-type(3n + 3) {
+    border-left: 2px solid var(--atelier-gold);
+}
+
+.chatbot-suggestion {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--atelier-gold-soft);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.chatbot-suggestion:hover {
+    text-decoration: underline;
+}
+
 .chatbot-message--user {
     justify-self: end;
     background: var(--atelier-gold);
@@ -403,6 +438,19 @@ body::before {
 .chatbot-quick button:hover {
     border-color: var(--atelier-gold);
     color: var(--atelier-gold-soft);
+}
+
+.chatbot-quick__featured {
+    border-color: var(--atelier-gold);
+    background: oklch(0.728 0.138 89.7 / 0.16);
+    color: var(--atelier-gold-soft);
+}
+
+.chatbot-quick__link {
+    border-color: transparent;
+    padding-inline: 4px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 .chatbot-form {

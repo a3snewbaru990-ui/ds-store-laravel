@@ -95,10 +95,6 @@
                 </div>
 
                 <div class="hero-controls__right">
-                    <button type="button" class="hero-pause" data-hero-pause aria-label="Jeda tayangan otomatis" aria-pressed="false">
-                        <x-icon name="pause" class="hero-pause__pause" />
-                        <x-icon name="play" class="hero-pause__play" />
-                    </button>
                     <p class="hero-counter"><span data-hero-current>01</span><span aria-hidden="true">/</span>{{ str_pad($slides->count(), 2, '0', STR_PAD_LEFT) }}</p>
                 </div>
             </div>

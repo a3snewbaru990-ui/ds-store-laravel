@@ -324,7 +324,7 @@ Carousel memakai tiga slide dari tabel hero_slides. JavaScript memutar otomatis 
 
 const canAutoplay = () =>
 
-slides.length > 1 && !userPaused && !hovered &&
+slides.length > 1 && !hovered &&
 
 !document.hidden && !reduceMotion.matches;
 
@@ -366,6 +366,8 @@ Gambar 4.7 Detail pesanan dan pembaruan status pada area admin
 
 Chatbot ringan ditambahkan pada layout publik sebagai komponen Blade. Tombol mengambang membuka panel yang bisa menerima pertanyaan bebas atau memakai empat tombol cepat. Jawaban harga diambil langsung dari atribut data pada kartu pricelist, sehingga tidak duplikat dengan data seeder. Panel menutup dengan Escape atau klik di luar, serta menyediakan tautan lanjut ke admin via WhatsApp.
 
+Gambar 4.8 Panel chatbot pada halaman publik
+
 ### 4.4 Penerapan Fitur Laravel
 
 | Fitur Laravel | Implementasi di Project |
@@ -395,7 +397,7 @@ Selama quality assurance ditemukan dan diperbaiki beberapa masalah. Perbaikan in
 | Judul bagian tertutup header saat klik menu anchor | Sticky header tidak memiliki scroll offset | html.scroll-padding-top = var(--header-offset) pada 128px desktop / 112px mobile |
 | Header seolah 'glitch' saat scroll | Announcement bar menyusut dan menggeser konten secara tiba-tiba | Tinggi header dibuat konstan; hanya warna dan bayangan yang berubah |
 | Teks hero tembus ke menu mobile | Background dropdown transparan 0.98 | Background dropdown dibuat solid #060E19 |
-| Carousel tidak lanjut setelah tombol jeda ditekan | Fokus tombol mengaktifkan state pause tambahan | State fokus dihapus dari syarat autoplay; hover dan tombol jeda tetap berfungsi |
+| Tombol jeda pada carousel terasa berlebih | Kontrol pause mengganggu visual hero | Tombol jeda dihapus; autoplay tetap berhenti saat hover dan lanjut saat kursor keluar |
 | Emblem rank memiliki kotak putih | Aset sumber berbackground putih | Background dihapus dengan flood fill + edge decontamination menjadi WebP transparan |
 | Hero carousel meluber pada lebar 861–1084px | aspect-ratio 16:9 berkelahi dengan min-height 610px | Ditambahkan width:100% pada .hero-carousel |
 
@@ -413,7 +415,7 @@ Pengujian dilakukan pada tiga lapis: (1) unit/feature test Laravel dengan SQLite
 | --- | --- | --- |
 | 1 | Autoplay carousel berpindah slide setelah ±5,2 detik | Lulus |
 | 2 | Tombol prev/next dan dot mengganti slide aktif | Lulus |
-| 3 | Tombol jeda menahan slide; setelah dilepas dan kursor keluar, autoplay lanjut | Lulus |
+| 3 | Autoplay berhenti saat kursor di atas carousel dan lanjut saat kursor keluar | Lulus |
 | 4 | Klik menu Pricelist mengarah ke #pricelist dengan judul tidak tertutup header | Lulus |
 | 5 | Drawer mobile terbuka, tautan menutup drawer setelah diklik | Lulus |
 | 6 | Login admin menuju /dashboard dan /admin | Lulus |
@@ -469,7 +471,7 @@ Gambar 5.2 Navigasi drawer mobile
 
 Website DS Store berhasil dibangun dengan Laravel 12 dan memenuhi kebutuhan utama: menampilkan promo Season 42, menyediakan pricelist resmi, mengelola pesanan, memberikan dashboard pelanggan dan admin, serta memungkinkan pelacakan tanpa login. Fitur Laravel digunakan secara konsisten mulai dari routing, MVC, Eloquent, migration, seeder, Blade, middleware, validasi, autentikasi, otorisasi, hingga pengujian otomatis.
 
-Proses QA menemukan beberapa masalah nyata—tombol logout tersembunyi, anchor tertutup header, dropdown mobile tembus pandang, dan carousel tidak melanjutkan setelah jeda. Seluruh masalah telah diperbaiki dan diverifikasi ulang dengan pengujian otomatis maupun browser.
+Proses QA menemukan beberapa masalah nyata—tombol logout tersembunyi, anchor tertutup header, dropdown mobile tembus pandang, dan carousel tidak melanjutkan pada hero. Seluruh masalah telah diperbaiki dan diverifikasi ulang dengan pengujian otomatis maupun browser.
 
 ### 6.2 Saran
 

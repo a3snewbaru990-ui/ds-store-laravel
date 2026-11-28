@@ -18,7 +18,7 @@
     <div class="chatbot-panel" id="chatbot-panel" data-chatbot-panel hidden>
         <div class="chatbot-panel__head">
             <div>
-                <p class="chatbot-panel__title">Asisten DS Store</p>
+                <p class="chatbot-panel__title"><span class="chatbot-panel__dot" aria-hidden="true"></span>Asisten DS Store</p>
                 <p class="chatbot-panel__sub">Biasanya jawab langsung</p>
             </div>
             <button type="button" class="chatbot-close" data-chatbot-close aria-label="Tutup asisten">
@@ -33,10 +33,10 @@
         </div>
 
         <div class="chatbot-quick" data-chatbot-quick aria-label="Pertanyaan cepat">
-            <button type="button" data-chatbot-ask="harga">Berapa harga joki?</button>
-            <button type="button" data-chatbot-ask="cara">Cara order gimana?</button>
-            <button type="button" data-chatbot-ask="lacak">Lacak pesanan</button>
-            <button type="button" data-chatbot-ask="admin">Chat admin</button>
+            <button type="button" class="chatbot-quick__featured" data-chatbot-ask="harga">Harga berapa?</button>
+            <button type="button" data-chatbot-ask="cara">Order gimana?</button>
+            <button type="button" data-chatbot-ask="lacak">Lacak order</button>
+            <button type="button" class="chatbot-quick__link" data-chatbot-ask="admin">Ingin chat admin</button>
         </div>
 
         <form class="chatbot-form" data-chatbot-form>
