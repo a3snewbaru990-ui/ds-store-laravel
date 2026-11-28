@@ -364,7 +364,7 @@ Gambar 4.7 Detail pesanan dan pembaruan status pada area admin
 
 #### 4.3.5 Chatbot Publik
 
-Chatbot ringan ditambahkan pada layout publik sebagai komponen Blade. Tombol mengambang membuka panel yang bisa menerima pertanyaan bebas atau memakai empat tombol cepat. Jawaban harga diambil langsung dari atribut data pada kartu pricelist, sehingga tidak duplikat dengan data seeder. Panel menutup dengan Escape atau klik di luar, serta menyediakan tautan lanjut ke admin via WhatsApp.
+Chatbot ringan ditambahkan pada layout publik sebagai komponen Blade. Tombol mengambang membuka panel yang menerima pertanyaan bebas maupun empat tombol cepat. Mesin jawaban mengenali niat pengguna: harga, paket tertentu, jumlah bintang, cara order, pembayaran, durasi, keamanan, request hero, registrasi, pelacakan, sapaan, dan ucapan terima kasih. Harga dan FAQ diteruskan dari server lewat atribut data, sehingga bot tidak perlu menyimpan data duplikat. Jika dua kali berturut-turut tidak mengenali pertanyaan, bot berhenti mengulang jawaban generik dan langsung menawarkan sambungan ke admin via WhatsApp. Panel menutup dengan Escape atau klik di luar.
 
 Gambar 4.8 Panel chatbot pada halaman publik
 

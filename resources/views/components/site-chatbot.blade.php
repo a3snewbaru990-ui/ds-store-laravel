@@ -1,8 +1,23 @@
 @php
     $whatsappUrl = config('site.whatsapp_url');
+    $botPackages = \App\Models\ServicePackage::active()
+        ->orderBy('sort_order')
+        ->get(['name', 'price', 'unit'])
+        ->map(fn ($package) => [
+            'name' => $package->name,
+            'price' => $package->price,
+            'unit' => $package->unit,
+        ])
+        ->all();
 @endphp
 
-<div class="site-chatbot" data-chatbot data-whatsapp="{{ $whatsappUrl }}">
+<div
+    class="site-chatbot"
+    data-chatbot
+    data-whatsapp="{{ $whatsappUrl }}"
+    data-packages="{{ json_encode($botPackages) }}"
+    data-faqs="{{ json_encode(config('site.faqs')) }}"
+>
     <button
         type="button"
         class="chatbot-toggle"
